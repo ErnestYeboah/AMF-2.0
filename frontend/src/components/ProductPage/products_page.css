@@ -1,0 +1,23 @@
+.product_card_wrapper {
+  display: grid;
+  padding: var(--padding);
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
+}
+
+.product_card {
+  font-size: var(--step-1);
+  box-shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
+  container-type: inline-size;
+  cursor: pointer;
+  transition: 100ms linear;
+
+  &:hover {
+    scale: 1.1;
+  }
+
+  .product_text {
+    margin-top: 0.5rem;
+    padding-inline: 2cqi;
+  }
+}

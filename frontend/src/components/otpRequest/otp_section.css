@@ -1,0 +1,80 @@
+.identification_section {
+  text-align: center;
+  display: grid;
+  gap: var(--gap);
+  margin: 2rem auto;
+  width: max(300px, 70%);
+
+  h2 {
+    font-weight: 600;
+  }
+
+  & button {
+    margin-top: var(--gap);
+  }
+}
+/* for the background  */
+.identification_section,
+.otp_verify_section,
+.password_set_section,
+.signin_section {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/assests/9782010.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: -1;
+  }
+}
+
+.otp_verify_section {
+  width: 90%;
+  margin: 4rem auto;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.input {
+  font-size: 1.1rem;
+  font-weight: 300;
+  padding: 0.5em 1em;
+  outline: 1px ridge var(--accent-color);
+  font-family: var(--p-font);
+
+  &:hover {
+    border: 1px solid transparent;
+  }
+}
+
+.password_set_section {
+  text-align: center;
+  display: grid;
+  gap: var(--gap);
+  margin: 2rem auto;
+  width: 70%;
+
+  h2 {
+    font-weight: 600;
+  }
+}
+
+.password_info {
+  text-align: left;
+  font-size: var(--step-1);
+
+  & p {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+.signin_section {
+  margin: 4rem auto;
+  width: 70%;
+}
