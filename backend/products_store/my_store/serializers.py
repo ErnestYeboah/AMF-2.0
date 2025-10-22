@@ -54,3 +54,14 @@ class ProductSerializer(ModelSerializer):
         model = Products
         fields = "__all__"
     
+
+class CartSerializer(ModelSerializer):
+    class Meta : 
+        model = Cart
+        fields = "__all__"
+
+
+class FavoriteSerializer(ModelSerializer):
+    class Meta :
+        model = Favorite
+        fields = "__all__"

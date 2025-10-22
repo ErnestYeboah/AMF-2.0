@@ -156,6 +156,24 @@ nav {
       opacity: var(--opacity, 0);
     }
   }
+
+  .icon {
+    position: relative;
+  }
+
+  .count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    color: var(--primary-color);
+    font-size: 10px;
+    background-color: var(--accent-color);
+    display: grid;
+    place-content: center;
+    width: 20px;
+    border-radius: 100vw;
+    aspect-ratio: 1;
+  }
 }
 
 .category_wrapper {
@@ -175,6 +193,29 @@ nav {
 
     &:hover {
       outline: 1px solid var(--accent-color);
+    }
+  }
+}
+
+.suggestions_box {
+  position: fixed;
+  top: 3.2rem;
+  background-color: var(--primary-color);
+  width: 50%;
+  translate: 50% 0;
+  box-shadow: var(--shadow);
+  padding: var(--padding-min);
+  min-height: 10vh;
+
+  & li {
+    list-style-type: none;
+    font-family: var(--p-font);
+    font-weight: 300;
+    font-size: var(--step-1);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--alt-primary-color);
     }
   }
 }

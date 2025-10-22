@@ -11,6 +11,8 @@ import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { removeToken } from "../../features/SigninSlice";
 import { toast } from "react-toastify";
+import { setCartEmptyIfLoggedOut } from "../../features/CartSlice";
+import { clearFavoriteWhenSignedOut } from "../../features/FavoriteSlice";
 const ProfileModal = ({
   className = "profile_modal",
 }: {
@@ -36,6 +38,8 @@ const ProfileModal = ({
     removeCookie("token");
     dispatch(removeToken());
     dispatch(toggleProfileModal("hidden"));
+    dispatch(setCartEmptyIfLoggedOut());
+    dispatch(clearFavoriteWhenSignedOut());
     toast.success("Signed out successfully ", { hideProgressBar: true });
   };
   return (

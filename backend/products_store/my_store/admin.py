@@ -30,3 +30,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'category']
     search_fields = ['name', 'category']
     
+
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    list_display = ['name', "quantity", 'total_price', 'category', 'size']
+
+@admin.register(Favorite)
+class CartAdmin(admin.ModelAdmin):
+    list_display = ['name', "category", 'product_id' , 'added_on']

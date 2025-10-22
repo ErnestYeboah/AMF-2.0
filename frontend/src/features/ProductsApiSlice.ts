@@ -4,6 +4,7 @@ import { BASE_URL } from "./OtpRequestSlice";
 import { toast } from "react-toastify";
 
 export type Product = {
+  id: number;
   brief_note: string;
   category: string;
   description: string;
@@ -23,13 +24,34 @@ interface User {
 interface State {
   fetch_product_status: "idle" | "pending" | "success" | "failed";
   search_by_category_status: "idle" | "pending" | "success" | "failed";
+  search_by_name_status: "idle" | "pending" | "success" | "failed";
   get_user_profile_status: "idle" | "pending" | "success" | "failed";
   update_user_profile_image_status: "idle" | "pending" | "success" | "failed";
   products: Product[];
   userProfile: User[];
   categoryProducts: Product[];
+  searchedProducts: Product[];
   profileModalState: "hidden" | "visible";
+  clothing_size: string;
+  shoe_size: string;
+  search_value: string;
 }
+
+const initialState: State = {
+  fetch_product_status: "idle",
+  search_by_category_status: "idle",
+  search_by_name_status: "idle",
+  get_user_profile_status: "idle",
+  update_user_profile_image_status: "idle",
+  products: [],
+  searchedProducts: [],
+  userProfile: [],
+  categoryProducts: [],
+  profileModalState: "hidden",
+  clothing_size: "",
+  shoe_size: "",
+  search_value: "",
+};
 
 export const getUserProfile: any = createAsyncThunk(
   "user_profile",
@@ -87,23 +109,40 @@ export const searchByCategory: any = createAsyncThunk(
   }
 );
 
-const initialState: State = {
-  fetch_product_status: "idle",
-  search_by_category_status: "idle",
-  get_user_profile_status: "idle",
-  update_user_profile_image_status: "idle",
-  products: [],
-  userProfile: [],
-  categoryProducts: [],
-  profileModalState: "hidden",
-};
+export const searchByName: any = createAsyncThunk(
+  "search_name",
+  async (payload: string) => {
+    if (payload) {
+      const response = await axios.get(
+        `${BASE_URL}/products?search=${payload}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      console.log(response.data);
+      return response.data;
+    }
+  }
+);
 
 export const ProductApiSlice = createSlice({
   name: "product_api",
   initialState,
   reducers: {
+    getClothingSize(state, action) {
+      state.clothing_size = action.payload;
+    },
+    getShoeSize(state, action) {
+      state.shoe_size = action.payload;
+    },
     toggleProfileModal(state, action: { payload: "visible" | "hidden" }) {
       state.profileModalState = action.payload;
+    },
+    getSearchValue(state, action) {
+      state.search_value = action.payload;
     },
   },
   extraReducers(builder) {
@@ -163,11 +202,28 @@ export const ProductApiSlice = createSlice({
           "unable to fetch products , check your internet connection",
           { hideProgressBar: true }
         );
+      })
+
+      //   search by item name
+      .addCase(searchByName.pending, (state) => {
+        state.search_by_name_status = "pending";
+      })
+      .addCase(searchByName.fulfilled, (state, action) => {
+        state.search_by_name_status = "success";
+        state.searchedProducts = action.payload;
+      })
+      .addCase(searchByName.rejected, (state) => {
+        state.search_by_name_status = "failed";
       });
   },
 });
 
 export default ProductApiSlice.reducer;
-export const { toggleProfileModal } = ProductApiSlice.actions;
+export const {
+  toggleProfileModal,
+  getClothingSize,
+  getShoeSize,
+  getSearchValue,
+} = ProductApiSlice.actions;
 export const product_data = (state: { product_api: State }) =>
   state.product_api;

@@ -1,0 +1,8 @@
+@media (width > 992px) {
+  .favorite_card_wrapper {
+    padding: var(--padding);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+  }
+}

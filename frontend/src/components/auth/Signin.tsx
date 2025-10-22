@@ -71,6 +71,7 @@ const Signin = () => {
             placeholder="Enter your email address"
             required
             value={email}
+            autoComplete="on"
             onChange={(e) => setEmail(e.currentTarget.value)}
           />
         </Space>

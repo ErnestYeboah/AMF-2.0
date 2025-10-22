@@ -1,5 +1,5 @@
 
-from rest_framework import status, response
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from django.core.mail import send_mail
@@ -10,6 +10,7 @@ from .serializers import *
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication 
+from rest_framework import filters
 # Create your views here.
 class UserViewset(ModelViewSet):
     queryset = CustomUser.objects.all()
@@ -110,6 +111,34 @@ class UserProfileViewset(ModelViewSet):
 class ProductViewset(ModelViewSet):
     queryset = Products.objects.all()
     serializer_class = ProductSerializer
-    filter_backends = [DjangoFilterBackend]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['category']
+    search_fields = ['name']
 
+
+class CartViewset(ModelViewSet):
+    queryset = Cart.objects.all()
+    serializer_class = CartSerializer
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication, ]
+
+    def get_queryset(self):
+        return Cart.objects.filter(added_by = self.request.user)
+
+    def perform_create(self, serializer):
+        serializer.save(added_by = self.request.user)
+
+
+
+class FavoriteModelViewset(ModelViewSet):
+    queryset = Favorite.objects.all()
+    serializer_class = FavoriteSerializer
+    permission_classes = [IsAuthenticated , ]
+    authentication_classes = [TokenAuthentication,]
+
+    def get_queryset(self):
+        return Favorite.objects.filter(added_by = self.request.user)
+    
+
+    def perform_create(self, serializer):
+        serializer.save(added_by = self.request.user)

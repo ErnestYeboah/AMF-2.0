@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.utils import timezone
 import random
+from django.contrib.auth import get_user_model
 # Create your models here.
 
 # Custom User Manager
@@ -78,3 +79,36 @@ class Products(models.Model):
 
     def __str__(self):
         return self.name
+
+
+User = get_user_model()
+class Cart(models.Model) : 
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='cart_items')
+    name = models.CharField(max_length=255)
+    product_id = models.IntegerField()
+    category = models.CharField(max_length=255)
+    size = models.CharField(max_length=255)
+    quantity = models.PositiveIntegerField(default=1)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  # ✅ unit price
+    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  # ✅ computed fieldt=0.00)  
+
+    def __str__(self):
+         return f"{self.name} x{self.quantity} (${self.total_price})"
+
+    
+    
+    def save(self, *args, **kwargs):
+        # Auto-calculate total_price when saving
+        self.total_price = self.price * self.quantity
+        super().save(*args, **kwargs)
+
+
+class Favorite(models.Model):
+    added_on = models.DateTimeField(auto_now_add=True)
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE , null=True )
+    name =  models.CharField(max_length=255)
+    category = models.CharField(max_length=255)
+    product_id = models.OneToOneField(Products, on_delete=models.CASCADE , null=True, unique=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  # ✅ unit price
+
+
