@@ -10,6 +10,7 @@ import ProductCard from "./ProductCard";
 import { nanoid } from "@reduxjs/toolkit";
 import "../ProductPage/products_page.css";
 import YouMayAlsoLikeDiv from "./YouMayAlsoLikeDiv";
+import NoSearchResults from "./NoSearchResults";
 
 const FoundSearchedItemPage = () => {
   const { name: searchedName } = useParams();
@@ -24,12 +25,16 @@ const FoundSearchedItemPage = () => {
 
   return (
     <>
-      <div className="product_card_wrapper searched_products_wrapper">
-        {searchedProducts &&
-          searchedProducts.map((item, _) => (
-            <ProductCard key={nanoid()} data={item} />
-          ))}
-      </div>
+      {searchedProducts.length === 0 ? (
+        <NoSearchResults />
+      ) : (
+        <div className="product_card_wrapper searched_products_wrapper">
+          {searchedProducts &&
+            searchedProducts.map((item, _) => (
+              <ProductCard key={nanoid()} data={item} />
+            ))}
+        </div>
+      )}
       <YouMayAlsoLikeDiv />
     </>
   );

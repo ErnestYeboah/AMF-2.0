@@ -20,6 +20,7 @@ import { cartApiData, fetchCartData } from "./features/CartSlice";
 import FavoriteHome from "./components/Favorite/FavoriteHome";
 import { favoriteApiData, fetchFavoriteItems } from "./features/FavoriteSlice";
 import FoundSearchedItemPage from "./components/ProductPage/FoundSearchedItemPage";
+import Homepage from "./components/Home/Homepage";
 
 function App() {
   const dispatch = useDispatch();
@@ -91,6 +92,7 @@ function App() {
       <ToastContainer />
       <Navbar />
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<AllProducts />} />
         <Route path={`/:token/identification`} element={<SendOtpRequest />} />
         <Route path="/:token/verify_otp" element={<VerifyOtpRequest />} />

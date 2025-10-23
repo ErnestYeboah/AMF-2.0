@@ -5,6 +5,7 @@ nav {
   width: 100%;
   z-index: 1000;
   background-color: var(--primary-color);
+  padding-bottom: var(--gap);
 }
 
 .avatar_image {

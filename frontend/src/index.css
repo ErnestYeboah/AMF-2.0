@@ -10,12 +10,13 @@
   --radius: 10px;
   --p-font: "Poppins", sans-serif;
   --heading-font: "Poppins", sans-serif;
+  --font-2: "Metal Mania";
   --transition: 300ms linear;
   --step-1: clamp(0.8rem, 1vw, 1rem);
   --step-2: clamp(1rem, 1.5vw, 1.2rem);
   --step-3: clamp(1.2rem, 1.8vw, 1.5rem);
   --margin: 3cqi;
-  --padding: clamp(2rem, 3vw, 6cqi);
+  --padding: clamp(2rem, 5vw, 6cqi);
   --padding-min: 2cqi;
   --shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
 }
@@ -62,7 +63,9 @@ input {
 }
 
 h2 {
-  font-family: var(--heading-font);
+  font-family: var(--h2-font, var(--heading-font));
+  font-size: var(--h2-size);
+  line-height: 1;
 }
 
 button {
