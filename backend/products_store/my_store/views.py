@@ -113,7 +113,7 @@ class ProductViewset(ModelViewSet):
     serializer_class = ProductSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['category']
-    search_fields = ['name']
+    search_fields = ['name' , 'category']
 
 
 class CartViewset(ModelViewSet):

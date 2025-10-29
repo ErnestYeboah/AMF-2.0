@@ -83,13 +83,17 @@
 }
 
 .similar_products_wrapper {
-  overflow-x: scroll;
   padding: var(--padding);
+  overflow-x: scroll;
 
   .similar_products_div {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    max-width: 100%;
+    display: flex;
     gap: var(--gap);
+
+    & .product_card {
+      min-width: 10rem;
+    }
   }
 }
 

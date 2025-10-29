@@ -13,9 +13,9 @@ const YouMayAlsoLikeDiv = () => {
     callRandom();
   }, []);
 
-  const firstFiveProducts = products.slice(0, 2);
-  const anotherFiveProducts = products.slice(2, 4);
-  const anotherFive = products.slice(4, 6);
+  const firstFiveProducts = products.slice(0, 6);
+  const anotherFiveProducts = products.slice(6, 12);
+  const anotherFive = products.slice(12, 19);
 
   const productsToShowForYou = [
     firstFiveProducts,
