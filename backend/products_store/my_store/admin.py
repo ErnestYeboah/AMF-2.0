@@ -38,3 +38,7 @@ class CartAdmin(admin.ModelAdmin):
 @admin.register(Favorite)
 class CartAdmin(admin.ModelAdmin):
     list_display = ['name', "category", 'product_id' , 'added_on']
+
+@admin.register(CheckoutAddress)
+class CheckoutAddressAdmin(admin.ModelAdmin):
+    list_display = ["first_name", "region", "city" , "phone_number", "additional_phone_number"]

@@ -112,3 +112,20 @@ class Favorite(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  # ✅ unit price
 
 
+class CheckoutAddress(models.Model):
+    added_by = models.ForeignKey(User, on_delete=models.CASCADE , null=True)
+    first_name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=10)
+    address = models.CharField(max_length=255 , default="No address")
+    additional_phone_number = models.CharField(max_length=10 , default="no addtional phone number")
+    region = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    additional_information = models.TextField(default="No Additional Information from user")
+
+
+    def __str__(self):
+        return f"First Name : {self.first_name}  , Region : {self.region} , City :  {self.city}"
+    
+    
+    

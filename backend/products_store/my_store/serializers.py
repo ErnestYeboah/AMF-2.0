@@ -65,3 +65,9 @@ class FavoriteSerializer(ModelSerializer):
     class Meta :
         model = Favorite
         fields = "__all__"
+
+
+class CheckoutAddressSerializer(ModelSerializer):
+    class Meta : 
+        model = CheckoutAddress
+        fields = "__all__"

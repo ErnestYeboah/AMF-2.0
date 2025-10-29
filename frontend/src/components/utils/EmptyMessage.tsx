@@ -18,9 +18,11 @@ const EmptyMessage = ({ object = "cart" }: { object: "cart" | "favorite" }) => {
           >
             Start Shopping
           </Link>
-          <Link className="text-[var(--accent-color)]" to={"/signin"}>
-            Sign in for better experience
-          </Link>
+          {!cookie["token"] && (
+            <Link className="text-[var(--accent-color)]" to={"/signin"}>
+              Sign in for better experience
+            </Link>
+          )}
         </div>
       ) : (
         <div className="empty_favorite_message empty_message">

@@ -1,9 +1,9 @@
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from django.core.mail import send_mail
 from django.conf import settings
+import requests
 from rest_framework.viewsets import ModelViewSet
 from .models import CustomUser
 from .serializers import *
@@ -142,3 +142,82 @@ class FavoriteModelViewset(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(added_by = self.request.user)
+
+
+
+
+
+class CheckoutAddressViewset(ModelViewSet):
+    queryset = CheckoutAddress.objects.all()
+    serializer_class = CheckoutAddressSerializer
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication,]
+
+    def get_queryset(self):
+        return CheckoutAddress.objects.filter(added_by = self.request.user)
+    
+
+    def perform_create(self, serializer):
+        serializer.save(added_by = self.request.user)
+
+    @action(detail=False, methods=["get", "patch"], url_path="my-address")
+    def my_address(self, request):
+        user = request.user
+        address = CheckoutAddress.objects.filter(added_by=user).first()
+
+        if request.method == "GET":
+            if address:
+                serializer = self.get_serializer(address)
+                return Response(serializer.data)
+            return Response({"message": "No address found"}, status=status.HTTP_404_NOT_FOUND)
+
+        if request.method == "PATCH":
+            data = request.data
+            if address:
+                # Update existing address
+                serializer = self.get_serializer(address, data=data, partial=True)
+                serializer.is_valid(raise_exception=True)
+                serializer.save()
+                return Response(
+                    {"message": "Address updated", "address": serializer.data},
+                    status=status.HTTP_200_OK,
+                )
+            else:
+                # Create a new one
+                serializer = self.get_serializer(data=data)
+                serializer.is_valid(raise_exception=True)
+                serializer.save(added_by=user)
+                return Response(
+                    {"message": "Address created", "address": serializer.data},
+                    status=status.HTTP_201_CREATED,
+                )
+
+    
+    @action(detail=False, methods=["post"], url_path="get_states")
+    def get_states(self, request):
+        """Fetch all regions/states in a country"""
+        url = "https://countriesnow.space/api/v0.1/countries/states"
+        payload = request.data
+        try:
+            res = requests.post(url, json=payload, timeout=10)
+            res.raise_for_status()
+            return Response(res.json(), status=res.status_code)
+        except requests.exceptions.RequestException as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+    @action(detail=False, methods=["post"], url_path="get_cities")
+    def get_cities(self, request):
+        """
+        Proxy request to CountriesNow API to fetch cities based on country and region.
+        Example body: { "country": "Ghana", "state": "Greater Accra" }
+        """
+        url = "https://countriesnow.space/api/v0.1/countries/state/cities"
+        payload = request.data
+
+        try:
+            res = requests.post(url, json=payload, timeout=10)
+            res.raise_for_status()
+            data = res.json()
+            return Response(data, status=res.status_code)
+        except requests.exceptions.RequestException as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

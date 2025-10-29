@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const categoriesList = [
+export const categoriesList = [
   { category: "all", to: "/products" },
-  { category: "shoes", to: "/products/category/shoes" },
+  { category: "shoes & sneakers", to: "/products/category/shoes" },
   { category: "clothing", to: "/products/category/clothing" },
   { category: "accessories", to: "/products/category/accessories" },
   { category: "headwear", to: "/products/category/headwear" },

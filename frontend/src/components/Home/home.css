@@ -133,7 +133,7 @@ div:has(> .card) {
     background-image: url("/assests/Nike\ Blazer\ Mid.jpg");
   }
   .card_eight {
-    background-image: url("/public/assests/the-history-of-the-nike-cortez.jpg");
+    background-image: url("/assests/the-history-of-the-nike-cortez.jpg");
   }
 
   .card_nine {
@@ -162,9 +162,3 @@ div:has(> .card) {
     background-image: url("/assests/nike-air-max-1-mcfly.jpg");
   }
 }
-
-/* .div13 {
-  grid-column: span 2 / span 2;
-  grid-column-start: 4;
-  grid-row-start: 6;
-} */

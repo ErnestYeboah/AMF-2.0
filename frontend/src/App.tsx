@@ -16,11 +16,19 @@ import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
 import DetailedProductCard from "./components/ProductPage/DetailedProductCard";
 import CartHome from "./components/Cart/CartHome";
-import { cartApiData, fetchCartData } from "./features/CartSlice";
+import {
+  cartApiData,
+  fetchCartData,
+  fetchRegions,
+  getCurentUserAddress,
+} from "./features/CartSlice";
 import FavoriteHome from "./components/Favorite/FavoriteHome";
 import { favoriteApiData, fetchFavoriteItems } from "./features/FavoriteSlice";
 import FoundSearchedItemPage from "./components/ProductPage/FoundSearchedItemPage";
 import Homepage from "./components/Home/Homepage";
+import Footer from "./components/Home/Footer";
+import CheckoutAddress from "./components/Cart/CheckoutAddress";
+import ConfirmOrder from "./components/Cart/ConfirmOrder";
 
 function App() {
   const dispatch = useDispatch();
@@ -70,6 +78,14 @@ function App() {
     }
   }, [cookie["token"]]);
 
+  // get regions data , cities data and the user's address info if the user already has
+  useEffect(() => {
+    if (cookie["token"]) {
+      dispatch(getCurentUserAddress(cookie["token"]));
+      dispatch(fetchRegions(cookie["token"]));
+    }
+  }, [cookie]);
+
   return (
     <>
       {/* check if an operation is pending or loading then show the progress bar */}
@@ -90,7 +106,7 @@ function App() {
       {/* check if user is logged in */}
 
       <ToastContainer />
-      <Navbar />
+      {location.pathname !== "/checkout_address" && <Navbar />}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/products" element={<AllProducts />} />
@@ -112,7 +128,10 @@ function App() {
           path="/products/search/:name"
           element={<FoundSearchedItemPage />}
         />
+        <Route path="/checkout_address" element={<CheckoutAddress />} />
+        <Route path="/confirm_order" element={<ConfirmOrder />} />
       </Routes>
+      {location.pathname !== "/confirm_order" && <Footer />}
     </>
   );
 }

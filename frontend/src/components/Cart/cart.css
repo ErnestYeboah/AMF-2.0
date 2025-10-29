@@ -67,3 +67,73 @@
     }
   }
 }
+
+.address_form_wrapper {
+  display: grid;
+  padding: var(--padding);
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  min-height: 100vh;
+}
+
+.address_form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+
+  & label {
+    display: block;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  .additonal_info_input,
+  .address_input {
+    grid-column: span 2;
+  }
+
+  & input {
+    outline: 1px solid var(--alt-primary-color);
+    display: block;
+    width: 100%;
+  }
+}
+
+.select {
+  width: 100%;
+  outline: 1px solid var(--alt-primary-color);
+  font-weight: 400;
+  border-radius: var(--radius);
+  font-family: var(--p-font);
+  font-family: var(--p-font);
+}
+
+.btns {
+  display: flex;
+  gap: var(--gap);
+  grid-column: 2;
+  max-width: max-content;
+  justify-self: end;
+
+  > :first-child {
+    --btn-bg: red;
+  }
+}
+
+.confirm_order_page {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  padding: var(--padding-min);
+}
+
+.address_card {
+  outline: 1px solid var(--alt-primary-color);
+  padding: var(--padding-min);
+  font-size: var(--step-1);
+
+  & p {
+    display: flex;
+    gap: 2rem;
+  }
+}

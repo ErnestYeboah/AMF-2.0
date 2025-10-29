@@ -27,6 +27,18 @@ export type LocalCartState = {
   total_price: number;
 };
 
+export type AddressForm = {
+  id?: number;
+  first_name: string;
+  last_name: string;
+  phone_number: string;
+  address: string;
+  additional_phone_number: string;
+  region: string;
+  city: string;
+  additional_information: string;
+};
+
 // get local cart
 function loadLocalCart() {
   try {
@@ -41,13 +53,24 @@ function saveToLocalCart(cart: LocalCartState[]) {
   localStorage.setItem("cart", JSON.stringify(cart));
 }
 
+type Region = {
+  name: string;
+  state_code: string;
+};
 interface State {
   add_to_cart_status: "idle" | "pending" | "success" | "failed";
   fetch_data_status: "idle" | "pending" | "success" | "failed";
   update_item_quantity_status: "idle" | "pending" | "success" | "failed";
   remove_item_from_cart_status: "idle" | "pending" | "success" | "failed";
+  get_region_status: "idle" | "pending" | "success" | "failed";
+  get_city_status: "idle" | "pending" | "success" | "failed";
+  save_address_form_status: "idle" | "pending" | "success" | "failed";
+  get_address_form_status: "idle" | "pending" | "success" | "failed";
   cart: Cart[];
+  regions: Region[];
+  cities: string[];
   localCart: LocalCartState[];
+  userAddressData: AddressForm;
 }
 
 const initialState: State = {
@@ -57,6 +80,23 @@ const initialState: State = {
   remove_item_from_cart_status: "idle",
   cart: [],
   localCart: loadLocalCart(),
+  get_city_status: "idle",
+  get_region_status: "idle",
+  save_address_form_status: "idle",
+  get_address_form_status: "idle",
+  userAddressData: {
+    id: 0,
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    address: "",
+    additional_phone_number: "",
+    region: "",
+    city: "",
+    additional_information: "",
+  },
+  regions: [],
+  cities: [],
 };
 
 type Payload = {
@@ -115,7 +155,6 @@ export const updateItemQuantity: any = createAsyncThunk(
           },
         }
       );
-      console.log(response.data);
       return response.data;
     }
   }
@@ -133,6 +172,94 @@ export const removeFromCart: any = createAsyncThunk(
       });
 
       return { data: response.data, id: id };
+    }
+  }
+);
+
+export const fetchRegions: any = createAsyncThunk(
+  "get_regions",
+  async (token: string) => {
+    if (token) {
+      const response = await axios.post(
+        `${BASE_URL}/address/get_states/`,
+
+        { country: "Ghana" },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+      return response.data.data;
+    }
+  }
+);
+export const fetchCities: any = createAsyncThunk(
+  "get_cities",
+  async (payload: { region: string; token: string }) => {
+    const { token, region } = payload;
+    if (region) {
+      const response = await axios.post(
+        `${BASE_URL}/address/get_cities/`,
+
+        { country: "Ghana", state: region },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
+
+      return response.data.data;
+    }
+  }
+);
+
+export const getCurentUserAddress: any = createAsyncThunk(
+  "get_address",
+  async (token: string, { rejectWithValue }) => {
+    try {
+      if (token) {
+        const response = await axios.get(`${BASE_URL}/address/my-address/`, {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        });
+        return response.data;
+      }
+    } catch (err: any) {
+      if (err.response && err.response.data) {
+        return rejectWithValue(err.response.data);
+      } else {
+        return rejectWithValue("no internet connection");
+      }
+    }
+  }
+);
+
+type AddressPayload = {
+  token: string;
+  addressData: AddressForm;
+};
+
+export const saveAddressForm: any = createAsyncThunk(
+  "save_form",
+  async (payload: AddressPayload) => {
+    const { token, addressData } = payload;
+    if (token) {
+      const response = await axios.patch(
+        `${BASE_URL}/address/my-address/`,
+        addressData,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return response.data;
     }
   }
 );
@@ -175,6 +302,20 @@ export const CartSlice = createSlice({
       state.localCart.splice(itemToEditIndex, 1, action.payload);
       saveToLocalCart(state.localCart);
       showToast("success", "changes have been applied successfully");
+    },
+
+    clearUserAddressData(state) {
+      state.userAddressData = {
+        id: 0,
+        first_name: "",
+        last_name: "",
+        phone_number: "",
+        address: "",
+        additional_phone_number: "",
+        region: "",
+        city: "",
+        additional_information: "",
+      };
     },
   },
   extraReducers(builder) {
@@ -245,6 +386,64 @@ export const CartSlice = createSlice({
           "error",
           "could not remove item , check your internet connection and try again "
         );
+      })
+
+      // get address data of logged user
+      .addCase(getCurentUserAddress.pending, (state) => {
+        state.get_address_form_status = "pending";
+      })
+      .addCase(getCurentUserAddress.fulfilled, (state, action) => {
+        state.get_address_form_status = "success";
+        state.userAddressData = action.payload;
+      })
+      .addCase(getCurentUserAddress.rejected, (state) => {
+        state.get_address_form_status = "failed";
+      })
+
+      // save address data to api
+      .addCase(saveAddressForm.pending, (state) => {
+        state.save_address_form_status = "pending";
+      })
+      .addCase(saveAddressForm.fulfilled, (state, action) => {
+        state.save_address_form_status = "success";
+        state.userAddressData = action.payload.address;
+        showToast("success", action.payload.message);
+      })
+      .addCase(saveAddressForm.rejected, (state) => {
+        state.save_address_form_status = "failed";
+        showToast("error", "failed to save user address ");
+      })
+
+      // get all regions of ghana for user selection
+      .addCase(fetchRegions.pending, (state) => {
+        state.get_region_status = "pending";
+      })
+      .addCase(fetchRegions.fulfilled, (state, action) => {
+        state.get_region_status = "success";
+        state.regions = action.payload.states;
+      })
+      .addCase(fetchRegions.rejected, (state) => {
+        state.get_region_status = "failed";
+        showToast(
+          "error",
+          "couldn't fetch regions data , please check your internet connection and try again"
+        );
+      })
+
+      // get all cities of ghana for user region selection
+      .addCase(fetchCities.pending, (state) => {
+        state.get_city_status = "pending";
+      })
+      .addCase(fetchCities.fulfilled, (state, action) => {
+        state.get_city_status = "success";
+        state.cities = action.payload;
+      })
+      .addCase(fetchCities.rejected, (state) => {
+        state.get_city_status = "failed";
+        showToast(
+          "error",
+          "couldn't fetch cities data , please check your internet connection and try again later"
+        );
       });
   },
 });
@@ -255,5 +454,6 @@ export const {
   addItemToLocalCart,
   removeFromLocalCart,
   updateItemQuantityFromLocalCart,
+  clearUserAddressData,
 } = CartSlice.actions;
 export const cartApiData = (state: { cart: State }) => state.cart;

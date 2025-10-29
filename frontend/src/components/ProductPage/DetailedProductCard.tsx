@@ -85,7 +85,7 @@ const DetailedProductCard = () => {
   function checkShoeIsValid() {
     if (foundCard?.category === "shoes") {
       return !shoe_size
-        ? setSizeError("Select a sizee")
+        ? setSizeError("Select a size")
         : cookie["token"]
         ? dispatch(
             saveToCart({
