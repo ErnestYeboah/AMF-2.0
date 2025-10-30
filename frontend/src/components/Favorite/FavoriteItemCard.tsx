@@ -15,7 +15,7 @@ const FavoriteItemCard = ({ data }: { data: Favorite }) => {
   const dispatch = useDispatch();
 
   const foundItem = products.find((item) => item.id === product_id);
-
+  
   return (
     <div className="product_card favorite_item_card">
       <figure>
