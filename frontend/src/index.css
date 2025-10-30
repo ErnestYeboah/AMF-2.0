@@ -16,6 +16,7 @@
   --step-1: clamp(0.8rem, 1vw, 1rem);
   --step-2: clamp(1rem, 1.5vw, 1.2rem);
   --step-3: clamp(1.2rem, 1.8vw, 1.5rem);
+  --step-4: clamp(2rem, 5vw, 3rem);
   --margin: 3cqi;
   --padding: clamp(2rem, 5vw, 6cqi);
   --padding-min: 2cqi;
@@ -147,22 +148,29 @@ footer {
   background-color: hsla(from var(--text-color) h s l / 0.95);
   color: var(--primary-color);
   padding: var(--padding);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
 
-  .company_name {
-    font-size: 4rem;
-    --h2-font: var(--font-2);
+  @media (width > 992px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
 
-  & h2 {
-    font-size: var(--step-3);
-    margin-bottom: 1rem;
+  @media (width < 992px) {
+    > * {
+      text-align: center;
+    }
+  }
+
+  .company_name {
+    font-size: clamp(2rem, 5vw, 4rem);
+    text-align: center;
+    --h2-font: var(--font-2);
+    margin-bottom: 2rem;
   }
 
   & a {
     position: relative;
+    text-transform: capitalize;
 
     &:hover {
       --scale: 1;
@@ -174,6 +182,7 @@ footer {
       bottom: -4px;
       width: 100%;
       height: 2px;
+      left: 0;
       border-radius: var(--radius);
       position: absolute;
       transition: 500ms;
@@ -182,18 +191,38 @@ footer {
     }
   }
 
-  .list_links {
-    & a {
-      text-transform: capitalize;
-      display: block;
+  @media (width < 992px) {
+    .list_links {
+      margin-bottom: var(--gap);
+      & h2 {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+      }
 
-      width: max-content;
+      & a {
+        display: block;
+      }
+    }
+  }
+
+  @media (width > 992px) {
+    & h2 {
+      font-size: var(--step-3);
+      margin-block: 1rem;
+    }
+
+    .list_links {
+      & a {
+        display: block;
+        width: max-content;
+      }
     }
   }
 
   .brand_name {
     text-align: center;
     grid-column: -1 / 1;
+    margin-top: var(--gap);
   }
 }
 

@@ -27,37 +27,28 @@
 
   & h2 {
     font-family: var(--font-2);
-    font-size: 3rem;
+    font-size: var(--step-4);
   }
 }
 
 .featured_wrapper {
   padding-inline: var(--padding);
   --h2-font: var(--font-2);
-  --h2-size: 2rem;
+  --h2-size: var(--step-4);
 }
 
-div:has(> .card) {
+.featured_grid {
   display: grid;
   grid-auto-rows: 60vh;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--gap);
-}
-
-.card:not(.card_seven) {
-  box-shadow: var(--shadow);
-  align-content: end;
-  padding: 1cqi;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: var(--radius);
-  color: var(--primary-color);
 
   & p {
-    margin-bottom: 0.5rem;
+    font-size: var(--step-2);
   }
-  /* font-size: var(--step-1); */
+
+  @media (width > 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .featured_grid {
@@ -86,79 +77,153 @@ div:has(> .card) {
   }
 }
 
-.trending_products {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 8px;
+.card:not(.card_seven) {
+  box-shadow: var(--shadow);
+  align-content: end;
+  padding: 2cqi;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: var(--radius);
+  color: var(--primary-color);
 
-  .card:not(.card_seven) {
-    background-color: rgba(0, 0, 0, 0.541);
-    background-blend-mode: overlay;
+  & p {
+    margin-bottom: 0.5rem;
   }
+  /* font-size: var(--step-1); */
+}
 
-  .card_one {
-    background-image: url("/assests/airmax.jpg");
-    grid-row: span 2 / span 2;
-    grid-column-start: 1;
-    grid-row-start: 2;
-  }
-  .card_two {
-    background-image: url("/assests/airforce-1.jpg");
-    grid-row: span 3 / span 3;
-    grid-column-start: 2;
-    grid-row-start: 1;
-  }
-  .card_three {
-    background-image: url("/assests/s-l1200.jpg");
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2;
-    grid-column-start: 2;
-    grid-row-start: 5;
-  }
-  .card_four {
-    background-image: url("/assests/Nike-Dunk-Low-Retro-White-Black-2021-Product.jpg");
-    grid-row: span 3 / span 3;
-    grid-column-start: 1;
-    grid-row-start: 4;
-  }
+@media (width < 992px) {
+  .trending_products {
+    display: grid;
+    gap: var(--gap);
 
-  .card_five {
-    background-image: url("/assests/W+AIR+MAX+270.png");
-  }
-  .card_six {
-    grid-row: span 3 / span 3;
-    grid-column-start: 3;
-    grid-row-start: 2;
-    background-image: url("/assests/Nike\ Blazer\ Mid.jpg");
-  }
-  .card_eight {
-    background-image: url("/assests/the-history-of-the-nike-cortez.jpg");
-  }
+    .card_seven {
+      display: none;
+    }
 
-  .card_nine {
-    grid-row: span 2 / span 2;
-    grid-column-start: 4;
-    grid-row-start: 4;
-    background-image: url("/assests/nike-air-huarache-run-91-white-purple-punch-release-date.jpg");
-  }
+    .card {
+      height: 50vh;
+      background-color: rgba(0, 0, 0, 0.541);
+      background-blend-mode: overlay;
+    }
 
-  .card_ten {
-    grid-row: span 2 / span 2;
-    grid-column-start: 5;
-    grid-row-start: 4;
-    background-image: url("/assests/Nike\ Air\ Max\ 95.jpg");
-  }
+    .card_one {
+      background-image: url("/assests/airmax.jpg");
+    }
+    .card_two {
+      background-image: url("/assests/airforce-1.jpg");
+    }
+    .card_three {
+      background-image: url("/assests/s-l1200.jpg");
+    }
+    .card_four {
+      background-image: url("/assests/Nike-Dunk-Low-Retro-White-Black-2021-Product.jpg");
+    }
 
-  .card_eleven {
-    background-image: url("/assests/W+NIKE+V2K+RUN.png");
-  }
+    .card_five {
+      background-image: url("/assests/W+AIR+MAX+270.png");
+    }
+    .card_six {
+      background-image: url("/assests/Nike\ Blazer\ Mid.jpg");
+    }
+    .card_eight {
+      background-image: url("/assests/the-history-of-the-nike-cortez.jpg");
+    }
 
-  .card_twelve {
-    grid-column: span 2 / span 2;
-    grid-row: span 3 / span 3;
-    grid-column-start: 4;
-    grid-row-start: 1;
-    background-image: url("/assests/nike-air-max-1-mcfly.jpg");
+    .card_nine {
+      background-image: url("/assests/nike-air-huarache-run-91-white-purple-punch-release-date.jpg");
+    }
+
+    .card_ten {
+      background-image: url("/assests/Nike\ Air\ Max\ 95.jpg");
+    }
+
+    .card_eleven {
+      background-image: url("/assests/W+NIKE+V2K+RUN.png");
+    }
+
+    .card_twelve {
+      background-image: url("/assests/nike-air-max-1-mcfly.jpg");
+    }
+  }
+}
+
+@media (width > 992px) {
+  .trending_products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+
+    .card:not(.card_seven) {
+      background-color: rgba(0, 0, 0, 0.541);
+      background-blend-mode: overlay;
+    }
+
+    .card_one {
+      background-image: url("/assests/airmax.jpg");
+      grid-row: span 2 / span 2;
+      grid-column-start: 1;
+      grid-row-start: 2;
+    }
+    .card_two {
+      background-image: url("/assests/airforce-1.jpg");
+      grid-row: span 3 / span 3;
+      grid-column-start: 2;
+      grid-row-start: 1;
+    }
+    .card_three {
+      background-image: url("/assests/s-l1200.jpg");
+      grid-column: span 2 / span 2;
+      grid-row: span 2 / span 2;
+      grid-column-start: 2;
+      grid-row-start: 5;
+    }
+    .card_four {
+      background-image: url("/assests/Nike-Dunk-Low-Retro-White-Black-2021-Product.jpg");
+      grid-row: span 3 / span 3;
+      grid-column-start: 1;
+      grid-row-start: 4;
+    }
+
+    .card_five {
+      background-image: url("/assests/W+AIR+MAX+270.png");
+    }
+    .card_six {
+      grid-row: span 3 / span 3;
+      grid-column-start: 3;
+      grid-row-start: 2;
+      background-image: url("/assests/Nike\ Blazer\ Mid.jpg");
+    }
+    .card_eight {
+      background-image: url("/assests/the-history-of-the-nike-cortez.jpg");
+    }
+
+    .card_nine {
+      grid-row: span 2 / span 2;
+      grid-column-start: 4;
+      grid-row-start: 4;
+      background-image: url("/assests/nike-air-huarache-run-91-white-purple-punch-release-date.jpg");
+    }
+
+    .card_ten {
+      grid-row: span 2 / span 2;
+      grid-column-start: 5;
+      grid-row-start: 4;
+      background-image: url("/assests/Nike\ Air\ Max\ 95.jpg");
+    }
+
+    .card_eleven {
+      background-image: url("/assests/W+NIKE+V2K+RUN.png");
+    }
+
+    .card_twelve {
+      grid-column: span 2 / span 2;
+      grid-row: span 3 / span 3;
+      grid-column-start: 4;
+      grid-row-start: 1;
+      background-image: url("/assests/nike-air-max-1-mcfly.jpg");
+    }
   }
 }

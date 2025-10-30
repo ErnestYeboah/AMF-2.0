@@ -191,7 +191,3 @@ class CheckoutAddressViewset(ModelViewSet):
                     {"message": "Address created", "address": serializer.data},
                     status=status.HTTP_201_CREATED,
                 )
-
-    
-  
-  

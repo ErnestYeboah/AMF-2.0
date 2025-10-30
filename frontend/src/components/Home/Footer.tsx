@@ -6,15 +6,15 @@ const Footer = () => {
     <footer>
       <h2 className="company_name">Amaeton Fashion House</h2>
 
-      <div>
-        <h2 className="mb-[.5rem]">Quick Links</h2>
-        <ul className="list_links space-y-2">
+      <div className="list_links">
+        <h2>Quick Links</h2>
+        <div className="space-y-2">
           {categoriesList.map((list, index) => (
             <Link key={index} to={list.to}>
               {list.category}
             </Link>
           ))}
-        </ul>
+        </div>
       </div>
       <div className="cta">
         <h2>Call Us To Order</h2>

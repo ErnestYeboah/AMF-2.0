@@ -2,7 +2,7 @@
   display: grid;
   padding: var(--padding);
   gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 110px), 1fr));
 }
 
 .product_card {
@@ -38,6 +38,36 @@
     &.active {
       background-color: var(--accent-color);
     }
+  }
+}
+
+@media (width < 992px) {
+  .detailed_product_card {
+    .card_details {
+      padding: var(--padding);
+    }
+
+    & h2 {
+      font-size: var(--step-3);
+    }
+
+    .size_selection {
+      margin-block: var(--gap);
+    }
+
+    .flex_list {
+      display: grid;
+      gap: var(--gap);
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+    }
+  }
+}
+
+.detailed_product_card {
+  & button {
+    margin-inline: auto;
+    display: block;
   }
 }
 

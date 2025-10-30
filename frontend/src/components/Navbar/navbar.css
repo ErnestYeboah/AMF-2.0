@@ -5,7 +5,7 @@ nav {
   width: 100%;
   z-index: 1000;
   background-color: var(--primary-color);
-  padding-bottom: var(--gap);
+  container-type: inline-size;
 }
 
 .avatar_image {
@@ -25,13 +25,13 @@ nav {
   font-size: var(--step-1);
   top: 3rem;
   right: 1rem;
-  height: 40vh;
+  min-height: 20vh;
   padding: 10px;
   box-shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
   border-radius: var(--radius);
   display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 2rem;
+  grid-template-rows: 1fr 1fr;
+  gap: var(--gap);
   display: none;
   opacity: 0;
   transition-property: display opacity;
@@ -110,7 +110,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   height: 3rem;
-  padding-inline: 1rem;
+  padding-inline: var(--padding-min);
+  gap: var(--gap);
   box-shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
 
   .logo_icon {
@@ -178,15 +179,22 @@ nav {
 }
 
 .category_wrapper {
-  margin-top: var(--gap);
   display: flex;
+  align-items: center;
+  padding: 0.5rem;
   gap: var(--gap);
   justify-content: center;
+
+  @media (width < 992px) {
+    overflow-x: scroll;
+    justify-content: start;
+  }
 
   > * {
     box-shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
     padding: 0.3em 0.8em;
     border-radius: var(--radius);
+    white-space: nowrap;
 
     &.active {
       outline: 1px solid var(--accent-color);
@@ -207,6 +215,11 @@ nav {
   box-shadow: var(--shadow);
   padding: var(--padding-min);
   min-height: 10vh;
+
+  @media (width < 992px) {
+    width: 90%;
+    translate: 1rem 0;
+  }
 
   & li {
     list-style-type: none;

@@ -38,7 +38,7 @@ const SelectSize = ({ category }: { category: Category }) => {
   }, [clothing_size]);
 
   return (
-    <div>
+    <div className="size_selection">
       {category == "Clothing" ? (
         <Radio.Group
           className="flex_list"
