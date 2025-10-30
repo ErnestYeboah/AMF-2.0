@@ -142,13 +142,8 @@ MEDIA_URL = 'media/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_ROOT = BASE_DIR / 'media'
 
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    
 
 AUTH_USER_MODEL = 'my_store.CustomUser'
 

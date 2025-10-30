@@ -36,19 +36,15 @@ function App() {
   const [cookie] = useCookies(["token"]);
 
   // product data slice
-  const {
-    update_user_profile_image_status,
-    get_user_profile_status,
-    fetch_product_status,
-    search_by_category_status,
-  } = useSelector(product_data);
+  const { update_user_profile_image_status, get_user_profile_status } =
+    useSelector(product_data);
 
   // favorite data slice
   const { add_item_to_favorite_status, fetch_favorite_items_status } =
     useSelector(favoriteApiData);
 
   // cart data slice
-  const { add_to_cart_status, fetch_data_status } = useSelector(cartApiData);
+  const { add_to_cart_status } = useSelector(cartApiData);
 
   const [, , removeCookie] = useCookies(["generatedUrlToken"]);
 
@@ -91,12 +87,9 @@ function App() {
       {/* check if an operation is pending or loading then show the progress bar */}
       {update_user_profile_image_status === "pending" ||
         get_user_profile_status == "pending" ||
-        search_by_category_status == "pending" ||
-        fetch_data_status === "pending" ||
         fetch_favorite_items_status === "pending" ||
         add_item_to_favorite_status === "pending" ||
-        add_to_cart_status === "pending" ||
-        (fetch_product_status === "pending" && (
+        (add_to_cart_status === "pending" && (
           <Box sx={{ width: "100%" }}>
             <LinearProgress />
           </Box>

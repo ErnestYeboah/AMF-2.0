@@ -193,31 +193,5 @@ class CheckoutAddressViewset(ModelViewSet):
                 )
 
     
-    @action(detail=False, methods=["post"], url_path="get_states")
-    def get_states(self, request):
-        """Fetch all regions/states in a country"""
-        url = "https://countriesnow.space/api/v0.1/countries/states"
-        payload = request.data
-        try:
-            res = requests.post(url, json=payload, timeout=10)
-            res.raise_for_status()
-            return Response(res.json(), status=res.status_code)
-        except requests.exceptions.RequestException as e:
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        
-    @action(detail=False, methods=["post"], url_path="get_cities")
-    def get_cities(self, request):
-        """
-        Proxy request to CountriesNow API to fetch cities based on country and region.
-        Example body: { "country": "Ghana", "state": "Greater Accra" }
-        """
-        url = "https://countriesnow.space/api/v0.1/countries/state/cities"
-        payload = request.data
-
-        try:
-            res = requests.post(url, json=payload, timeout=10)
-            res.raise_for_status()
-            data = res.json()
-            return Response(data, status=res.status_code)
-        except requests.exceptions.RequestException as e:
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+  
+  

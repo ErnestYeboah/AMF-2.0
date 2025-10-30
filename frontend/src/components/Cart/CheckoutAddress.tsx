@@ -67,7 +67,7 @@ const CheckoutAddress = () => {
 
   useEffect(() => {
     if (region) {
-      dispatch(fetchCities({ region, token: cookie["token"] }));
+      dispatch(fetchCities(region));
     }
   }, [region]);
 

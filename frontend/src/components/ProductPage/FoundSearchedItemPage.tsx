@@ -11,11 +11,12 @@ import { nanoid } from "@reduxjs/toolkit";
 import "../ProductPage/products_page.css";
 import YouMayAlsoLikeDiv from "./YouMayAlsoLikeDiv";
 import NoSearchResults from "./NoSearchResults";
+import Skeleton from "../utils/Skeleton";
 
 const FoundSearchedItemPage = () => {
   const { name: searchedName } = useParams();
   const dispatch = useDispatch();
-  const { searchedProducts } = useSelector(product_data);
+  const { searchedProducts, search_by_name_status } = useSelector(product_data);
 
   // get the user selected item from suggestions list to display in the search placeholder
   useEffect(() => {
@@ -25,6 +26,7 @@ const FoundSearchedItemPage = () => {
 
   return (
     <>
+      {search_by_name_status === "pending" && <Skeleton />}
       {searchedProducts.length === 0 ? (
         <NoSearchResults />
       ) : (

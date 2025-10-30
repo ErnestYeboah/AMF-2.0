@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "./OtpRequestSlice";
 import { toast } from "react-toastify";
+const REGION_URL = "https://countriesnow.space/api/v0.1/countries/states";
+const CITIES_URL = "https://countriesnow.space/api/v0.1/countries/state/cities";
 
 export type Cart = {
   id: number;
@@ -59,7 +61,7 @@ type Region = {
 };
 interface State {
   add_to_cart_status: "idle" | "pending" | "success" | "failed";
-  fetch_data_status: "idle" | "pending" | "success" | "failed";
+  fetch_cart_data_status: "idle" | "pending" | "success" | "failed";
   update_item_quantity_status: "idle" | "pending" | "success" | "failed";
   remove_item_from_cart_status: "idle" | "pending" | "success" | "failed";
   get_region_status: "idle" | "pending" | "success" | "failed";
@@ -75,7 +77,7 @@ interface State {
 
 const initialState: State = {
   add_to_cart_status: "idle",
-  fetch_data_status: "idle",
+  fetch_cart_data_status: "idle",
   update_item_quantity_status: "idle",
   remove_item_from_cart_status: "idle",
   cart: [],
@@ -103,6 +105,10 @@ type Payload = {
   productData: Cart;
   token: string;
 };
+
+// The Next.js server route was removed from this frontend slice file because it belongs
+// in a Next.js API route file (under /pages/api or /app/api). Keeping server-only code
+// and imports like `next/server` in a client-side/frontend file causes build errors.
 
 export const saveToCart: any = createAsyncThunk(
   "save_to_cart",
@@ -181,13 +187,12 @@ export const fetchRegions: any = createAsyncThunk(
   async (token: string) => {
     if (token) {
       const response = await axios.post(
-        `${BASE_URL}/address/get_states/`,
+        `${REGION_URL}`,
 
         { country: "Ghana" },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${token}`,
           },
         }
       );
@@ -197,17 +202,15 @@ export const fetchRegions: any = createAsyncThunk(
 );
 export const fetchCities: any = createAsyncThunk(
   "get_cities",
-  async (payload: { region: string; token: string }) => {
-    const { token, region } = payload;
+  async (region: string) => {
     if (region) {
       const response = await axios.post(
-        `${BASE_URL}/address/get_cities/`,
+        `${CITIES_URL}`,
 
         { country: "Ghana", state: region },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Token ${token}`,
           },
         }
       );
@@ -334,14 +337,14 @@ export const CartSlice = createSlice({
       })
       // fetching cart data status
       .addCase(fetchCartData.pending, (state) => {
-        state.fetch_data_status = "pending";
+        state.fetch_cart_data_status = "pending";
       })
       .addCase(fetchCartData.fulfilled, (state, action) => {
-        state.fetch_data_status = "success";
+        state.fetch_cart_data_status = "success";
         state.cart = action.payload;
       })
       .addCase(fetchCartData.rejected, (state) => {
-        state.fetch_data_status = "failed";
+        state.fetch_cart_data_status = "failed";
         showToast(
           "error",
           "Could not retrieve items in cart, check your internet connection and try again"
