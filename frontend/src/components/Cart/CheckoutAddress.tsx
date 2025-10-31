@@ -107,6 +107,9 @@ const CheckoutAddress = () => {
 
   return (
     <>
+      <h2 className="text-[var(--accent-color)] address-h2">
+        CUSTOMER ADDRESS
+      </h2>
       <div className="address_form_wrapper">
         <form onSubmit={saveUserAddressForm} className="address_form" action="">
           <div className="input_group">
@@ -238,15 +241,11 @@ const CheckoutAddress = () => {
             <p className="text-red-500"> {city_region_error}</p>
           )}
           <div className="btns">
-            <button
-              type="button"
-              onClick={() =>
-                userAddressData ? navigate("/confirm_order") : navigate("/cart")
-              }
-            >
+            <button type="button" onClick={() => navigate("/cart")}>
               Cancel
             </button>
             <button>Save</button>
+            <button onClick={() => navigate("/confirm_order")}>Skip</button>
           </div>
         </form>
         <CheckOutModal />

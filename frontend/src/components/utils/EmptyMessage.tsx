@@ -33,7 +33,7 @@ const EmptyMessage = ({ object = "cart" }: { object: "cart" | "favorite" }) => {
           {!cookie["token"] && (
             <Link
               className="bg-[var(--accent-color)] transition duration-300 text-white py-[.5em] max-w-fit px-[1em] block mx-auto rounded-[var(--radius)] hover:bg-transparent hover:text-[var(--accent-color)] hover:outline-2 hover:outline-[var(--accent-color)] "
-              to={"/products"}
+              to={"/signin"}
             >
               Sign in to add items to favorites
             </Link>

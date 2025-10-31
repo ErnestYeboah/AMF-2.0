@@ -63,7 +63,14 @@ const Signin = () => {
         </h2>
         <p>Type your email address and password to continue</p>
       </div>
-      <form onSubmit={signin} className="mt-[2rem]">
+      <form
+        onSubmit={signin}
+        className={
+          signin_status === "pending"
+            ? "pointer-events-none mt-[2rem] opacity-20"
+            : "mt-[2rem]"
+        }
+      >
         <Space direction="vertical">
           <Input
             className="input"

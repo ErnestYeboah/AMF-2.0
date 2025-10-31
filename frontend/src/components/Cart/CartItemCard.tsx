@@ -55,7 +55,7 @@ const CartItemCard = ({ data }: { data: Cart }) => {
           </div>
         </div>
         <div className="cart_invoice">
-          <p className="text-[1.3rem] opacity-30">₵{price}</p>
+          <p className="text-[1.2rem] opacity-30">₵{price}</p>
           <p>
             <s>₵{foundProduct?.old_price}</s>
           </p>
