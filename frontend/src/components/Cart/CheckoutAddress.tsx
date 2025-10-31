@@ -245,7 +245,9 @@ const CheckoutAddress = () => {
               Cancel
             </button>
             <button>Save</button>
-            <button onClick={() => navigate("/confirm_order")}>Skip</button>
+            <button type="button" onClick={() => navigate("/confirm_order")}>
+              Skip
+            </button>
           </div>
         </form>
         <CheckOutModal />
