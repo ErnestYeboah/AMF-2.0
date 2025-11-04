@@ -1,10 +1,12 @@
 import { useState } from "react";
 import RemoveFromCartButton from "./RemoveFormCartButton";
 import {
+  cartApiData,
   updateItemQuantityFromLocalCart,
   type LocalCartState,
 } from "../../features/CartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Spin } from "antd";
 
 const LocalCartItemCard = ({ data }: { data: LocalCartState }) => {
   const {
@@ -20,13 +22,27 @@ const LocalCartItemCard = ({ data }: { data: LocalCartState }) => {
   } = data;
   const [newQuantity, setNewQuantity] = useState(quantity);
   const dispatch = useDispatch();
-  const getQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewQuantity(e.target.valueAsNumber);
+  const { update_item_quantity_status } = useSelector(cartApiData);
+  const decrementQuantity = () => {
+    setNewQuantity((c) => (c <= 1 ? 1 : c - 1));
+    if (newQuantity === 1) return;
+    else {
+      dispatch(
+        updateItemQuantityFromLocalCart({
+          ...data,
+          quantity: newQuantity - 1,
+          total_price: Number(price) * (newQuantity - 1),
+        })
+      );
+    }
+  };
+  const incrementQuantity = () => {
+    setNewQuantity((c) => c + 1);
     dispatch(
       updateItemQuantityFromLocalCart({
         ...data,
-        quantity: e.target.value,
-        total_price: Number(price) * Number(e.target.value),
+        quantity: newQuantity + 1,
+        total_price: Number(price) * (newQuantity + 1),
       })
     );
   };
@@ -42,14 +58,11 @@ const LocalCartItemCard = ({ data }: { data: LocalCartState }) => {
           <h2>{name}</h2>
           <p className="opacity-30">{category}</p>
           <p>Size : {size}</p>
-          <div className="qty_input">
-            <label htmlFor="quantity">Qty:</label>
-            <input
-              min={1}
-              onChange={getQuantity}
-              type="number"
-              value={newQuantity}
-            />
+          <div className="quantity_state">
+            <button onClick={decrementQuantity}> - </button>
+            <p>{newQuantity}</p>
+            <button onClick={incrementQuantity}>+</button>
+            {update_item_quantity_status === "pending" && <Spin />}
           </div>
         </div>
         <div className="cart_invoice">
