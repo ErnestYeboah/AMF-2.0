@@ -1,6 +1,7 @@
 import { Avatar } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserOutlined } from "@ant-design/icons";
 import {
   product_data,
   toggleProfileModal,
@@ -25,6 +26,7 @@ const ProfileModal = ({
   const { userProfile } = useSelector(product_data);
   const [cookie, , removeCookie] = useCookies(["token"]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getProfileImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setProfileImage(e.currentTarget.files?.[0]);
@@ -45,6 +47,7 @@ const ProfileModal = ({
     dispatch(clearFavoriteWhenSignedOut());
     dispatch(clearUserAddressData());
     toast.success("Signed out successfully ", { hideProgressBar: true });
+    navigate("/signin");
   };
   return (
     <div className={className}>
@@ -70,7 +73,10 @@ const ProfileModal = ({
       </div>
 
       <div className="tool_options">
-        <Link to={"/profile"}>Change Password</Link>
+        <div className="flex gap-1">
+          <UserOutlined />
+          <Link to="/my_account">My Account</Link>
+        </div>
         <button className="signout_btn" onClick={signOut}>
           Sign Out
         </button>

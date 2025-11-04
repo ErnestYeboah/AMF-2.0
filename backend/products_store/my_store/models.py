@@ -26,10 +26,11 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
-    profile_image = models.ImageField(blank=True, null=True , default='default_profile.png')
+    profile_image = models.ImageField(blank=True, null=True , default='none')
     otp = models.CharField(max_length=6, blank=True, null=True)
     otp_expiry = models.DateTimeField(blank=True, null=True)
-
+    otp_verified_for_password_change = models.BooleanField(default=False)
+    otp_verified_at = models.DateTimeField(null=True, blank=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -128,4 +129,13 @@ class CheckoutAddress(models.Model):
         return f"First Name : {self.first_name}  , Region : {self.region} , City :  {self.city}"
     
     
+class History(models.Model):
+     added_on = models.DateTimeField(auto_now_add=True)
+     product_name = models.CharField(max_length=255)
+     product_id = models.OneToOneField(Products , on_delete=models.CASCADE)
+
+
+     def __str__(self):
+         return self.product_name
+     
     

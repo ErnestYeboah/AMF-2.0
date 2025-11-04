@@ -1,0 +1,247 @@
+/* all devices */
+.sidebar {
+  box-shadow: var(--shadow);
+  max-height: max-content;
+  position: sticky;
+  top: 6.9rem;
+  left: 0;
+  z-index: 1;
+  background-color: var(--primary-color);
+
+  .link {
+    display: flex;
+    gap: 0.5rem;
+    padding: var(--mini-padding);
+    margin-bottom: var(--mini-padding);
+
+    &:hover {
+      background-color: var(--alt-primary-color);
+    }
+  }
+}
+
+.my_account_wrapper {
+  & h2 {
+    padding: var(--mini-padding);
+    outline: 1px solid var(--alt-primary-color);
+  }
+
+  .first_card {
+    --width: 5rem;
+    --radius: 100vw;
+
+    outline: 1px solid var(--alt-primary-color);
+
+    figure {
+      position: relative;
+      margin-inline: auto;
+      width: max-content;
+      background-color: var(--alt-primary-color);
+      border-radius: var(--radius);
+
+      .loader {
+        background-color: var(--alt-primary-color);
+        width: var(--width);
+        border-radius: var(--radius);
+        aspect-ratio: 1;
+        display: grid;
+        place-items: center;
+      }
+      & img {
+        width: var(--width);
+        border-radius: var(--radius);
+      }
+    }
+
+    & .btn {
+      position: relative;
+
+      & button {
+        position: absolute;
+        left: 2rem;
+        translate: 50% 0;
+        pointer-events: none;
+      }
+    }
+
+    .details {
+      padding: var(--mini-padding);
+      display: grid;
+      gap: var(--gap);
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+
+.delete_btn {
+  --btn-bg: red;
+}
+
+.delete_account_wrapper {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0 0 0 / 0.8);
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  z-index: 1000;
+  scale: 0;
+  transition: 200ms linear;
+
+  &.active {
+    scale: 1;
+  }
+
+  .delete_account_modal {
+    display: flex;
+    width: 100%;
+
+    > * {
+      min-width: 100%;
+      min-height: 40vh;
+    }
+  }
+
+  .first_caution_box,
+  .confirm_delete_modal {
+    color: var(--primary-color);
+    width: max(45%, 320px);
+    margin-inline: auto;
+    background-color: hsla(from var(--text-color) h s l / 0.9);
+    min-height: inherit;
+    border-radius: var(--radius);
+    display: grid;
+    grid-auto-rows: auto 1fr auto;
+    background-image: url("/public/assests/9782010.jpg");
+    background-size: contain;
+    background-blend-mode: overlay;
+
+    & h3 {
+      padding: var(--mini-padding);
+      border-bottom: 1px solid var(--alt-primary-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .close_btn {
+      background-color: transparent;
+    }
+
+    .account_icon {
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      gap: var(--gap);
+    }
+  }
+
+  .first_caution_box {
+    .btn_wrapper {
+      border-top: 1px solid var(--alt-primary-color);
+      padding: var(--mini-padding);
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .confirm_delete_modal {
+    gap: var(--gap);
+
+    .input_wrapper {
+      text-align: center;
+      padding: var(--mini-padding);
+      border-top: 1px solid var(--alt-primary-color);
+      display: grid;
+      gap: 0.4rem;
+      --btn-bg: red;
+
+      & input {
+        outline: 1px solid var(--alt-primary-color);
+        height: 2rem;
+        background-color: var(--text-color);
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (width < 992px) {
+  .account_page {
+    padding: var(--padding-min);
+    font-size: 0.8rem;
+    gap: var(--mini-padding);
+  }
+
+  .account_settings_wrapper {
+    padding: var(--padding-min);
+    min-height: 50vh;
+    background-image: url("/public/assests/9782010.jpg");
+    background-size: cover;
+    background-color: rgba(247, 246, 246, 0.904);
+    background-blend-mode: overlay;
+    align-content: center;
+
+    .title {
+      position: relative;
+    }
+
+    .actions {
+      margin-top: 1rem;
+      text-align: center;
+      display: grid;
+      justify-items: center;
+      gap: var(--gap);
+
+      > :first-child {
+        font-size: var(--step-3);
+        font-weight: 300;
+      }
+    }
+  }
+}
+
+@media (width > 992px) {
+  .account_page {
+    --mini-padding: 1cqi;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+    padding: var(--padding-min);
+  }
+
+  .my_account_wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap);
+  }
+
+  .account_settings_wrapper {
+    padding: var(--padding-min);
+    min-height: 80vh;
+
+    .title {
+      position: relative;
+
+      > :first-child {
+        position: absolute;
+        font-weight: 300;
+        opacity: 0.8;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        font-family: var(--heading-font);
+      }
+    }
+
+    .actions {
+      text-align: center;
+      display: grid;
+      justify-items: center;
+      gap: var(--gap);
+
+      > :first-child {
+        font-size: var(--step-3);
+        font-weight: 300;
+      }
+    }
+  }
+}

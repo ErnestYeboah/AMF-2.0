@@ -40,7 +40,9 @@ class SetPasswordSerializer(serializers.Serializer):
         user.save()
         return user
 
-        
+    
+
+
 class EmailSerializer(serializers.Serializer):
     email = serializers.EmailField()
 
@@ -71,3 +73,10 @@ class CheckoutAddressSerializer(ModelSerializer):
     class Meta : 
         model = CheckoutAddress
         fields = "__all__"
+
+
+class HistorySerializer(ModelSerializer):
+    class Meta :
+        model = History
+        fields ="__all__"
+        

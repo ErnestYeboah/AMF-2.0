@@ -20,6 +20,7 @@
   --margin: 3cqi;
   --padding: clamp(2rem, 5vw, 6cqi);
   --padding-min: 2cqi;
+  --mini-padding: 1cqi;
   --shadow: 0px 4px 4px rgba(0 0 0 / 0.2);
   --skeleton-highlight: rgba(255, 255, 255, 0.6);
   --skeleton-animation-duration: 1.1s;
@@ -243,6 +244,10 @@ select {
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: 40vh;
   gap: 2rem;
+
+  @media (width < 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   .skeleton_card {
     position: relative;

@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import "./otp_section.css";
 import Logo from "../Logo";
 import { useCookies } from "react-cookie";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   otp_request_data,
   sendOtpRequest,
@@ -20,16 +20,7 @@ const SendOtpRequest = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { send_otp_request_status, message } = useSelector(otp_request_data);
-  const { token: urlToken } = useParams();
-  const [generatedUrlToken] = useCookies(["generatedUrlToken"]);
-  const [, setVerifyOtpCookie] = useCookies(["verifyOtpGeneratedUrlToken"]);
   const verifyOtpRef = useRef(nanoid());
-
-  useEffect(() => {
-    if (generatedUrlToken["generatedUrlToken"] !== urlToken) {
-      navigate("/signin");
-    }
-  }, [generatedUrlToken, urlToken, navigate]);
 
   const send_otp_request = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,7 +41,6 @@ const SendOtpRequest = () => {
         return;
       } else {
         navigate(`/${verifyOtpRef.current}/verify_otp`);
-        setVerifyOtpCookie("verifyOtpGeneratedUrlToken", verifyOtpRef.current);
       }
     }
   }, [send_otp_request_status, navigate]);

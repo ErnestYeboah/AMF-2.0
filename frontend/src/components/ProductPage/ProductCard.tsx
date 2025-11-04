@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-import type { Product } from "../../features/ProductsApiSlice";
+import {
+  product_data,
+  updateHistoryList,
+  type Product,
+} from "../../features/ProductsApiSlice";
 import { CiHeart } from "react-icons/ci";
 import { useCookies } from "react-cookie";
 import {
@@ -11,11 +15,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductCard = ({ data }: { data: Product }) => {
-  const { name, price, image, brief_note, id, category } = data;
+  const { name, price, image, brief_note, id, category, old_price } = data;
   const [cookie] = useCookies(["token"]);
   const dispatch = useDispatch();
   const path = location.pathname;
   const { favorites } = useSelector(favoriteApiData);
+  const { history } = useSelector(product_data);
 
   const foundItem = favorites.find((item) => item.product_id === id);
 
@@ -39,9 +44,23 @@ const ProductCard = ({ data }: { data: Product }) => {
     dispatch(removeFromFavorite({ id: foundItem?.id, token: cookie["token"] }));
   };
 
+  const addToHistoryList = () => {
+    const existingItem = history.find((item) => item.product_id === id);
+    if (existingItem) {
+      return;
+    } else {
+      dispatch(
+        updateHistoryList({
+          token: cookie["token"],
+          values: { product_id: id, product_name: name },
+        })
+      );
+    }
+  };
+
   return (
     <div className="product_card">
-      <figure>
+      <figure onClick={addToHistoryList}>
         <Link to={`/product/${name}`}>
           <img src={image} alt={name} />
         </Link>
@@ -51,6 +70,9 @@ const ProductCard = ({ data }: { data: Product }) => {
         <p>{name}</p>
         <p className="text-[var(--accent-color)]">
           <b>₵{price}</b>
+        </p>
+        <p className="opacity-50">
+          <s>₵{old_price}</s>
         </p>
       </div>
       {cookie["token"] && (

@@ -42,3 +42,6 @@ class CartAdmin(admin.ModelAdmin):
 @admin.register(CheckoutAddress)
 class CheckoutAddressAdmin(admin.ModelAdmin):
     list_display = ["first_name", "region", "city" , "phone_number", "additional_phone_number"]
+@admin.register(History)
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = ["product_name", "product_id", "added_on" ]

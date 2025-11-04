@@ -8,7 +8,11 @@ import Signin from "./components/auth/Signin";
 import { useCookies } from "react-cookie";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts, product_data } from "./features/ProductsApiSlice";
+import {
+  fetchProducts,
+  getHistoryList,
+  product_data,
+} from "./features/ProductsApiSlice";
 import AllProducts from "./components/ProductPage/AllProducts";
 import Navbar from "./components/Navbar/Navbar";
 import CategoryProductPage from "./components/ProductPage/CategoryProductPage";
@@ -29,6 +33,12 @@ import Homepage from "./components/Home/Homepage";
 import Footer from "./components/Home/Footer";
 import CheckoutAddress from "./components/Cart/CheckoutAddress";
 import ConfirmOrder from "./components/Cart/ConfirmOrder";
+import MyAccount from "./components/auth/MyAccount";
+import AddressBook from "./components/auth/AddressBook";
+import History from "./components/ProductPage/History";
+import AccountSettings from "./components/auth/AccountSettings";
+import VerifyPasswordChangeOtp from "./components/otpRequest/VerifyPasswordChangeOtp";
+import PasswordReset from "./components/otpRequest/PasswordReset";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,20 +50,10 @@ function App() {
     useSelector(product_data);
 
   // favorite data slice
-  const { add_item_to_favorite_status, fetch_favorite_items_status } =
-    useSelector(favoriteApiData);
+  const { add_item_to_favorite_status } = useSelector(favoriteApiData);
 
   // cart data slice
   const { add_to_cart_status } = useSelector(cartApiData);
-
-  const [, , removeCookie] = useCookies(["generatedUrlToken"]);
-
-  useEffect(() => {
-    // If not on /signin, remove the cookie
-    if (location.pathname == "/signin") {
-      removeCookie("generatedUrlToken", { path: "/" });
-    }
-  }, [location.pathname]); // run every time route changes
 
   // get all products here to prevent uneccsary rendering
   useEffect(() => {
@@ -82,12 +82,17 @@ function App() {
     }
   }, [cookie]);
 
+  useEffect(() => {
+    if (cookie["token"]) {
+      dispatch(getHistoryList(cookie["token"]));
+    }
+  }, [cookie]);
+
   return (
     <>
       {/* check if an operation is pending or loading then show the progress bar */}
       {update_user_profile_image_status === "pending" ||
         get_user_profile_status == "pending" ||
-        fetch_favorite_items_status === "pending" ||
         add_item_to_favorite_status === "pending" ||
         (add_to_cart_status === "pending" && (
           <Box sx={{ width: "100%" }}>
@@ -123,6 +128,15 @@ function App() {
         />
         <Route path="/checkout_address" element={<CheckoutAddress />} />
         <Route path="/confirm_order" element={<ConfirmOrder />} />
+        <Route path="/my_account" element={<MyAccount />} />
+        <Route path="/address" element={<AddressBook />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/account_settings/:token" element={<AccountSettings />} />
+        <Route
+          path="/reset_password_verification/:token"
+          element={<VerifyPasswordChangeOtp />}
+        />
+        <Route path="/reset_password/:token" element={<PasswordReset />} />
       </Routes>
       {location.pathname !== "/confirm_order" && <Footer />}
     </>

@@ -5,14 +5,18 @@ import "../ProductPage/products_page.css";
 import FavoriteItemCard from "./FavoriteItemCard";
 import { nanoid } from "@reduxjs/toolkit";
 import EmptyMessage from "../utils/EmptyMessage";
+import Skeleton from "../utils/Skeleton";
 
 const FavoriteHome = () => {
-  const { favorites } = useSelector(favoriteApiData);
+  const { favorites, fetch_favorite_items_status } =
+    useSelector(favoriteApiData);
 
   return (
     <>
       {favorites.length === 0 ? (
         <EmptyMessage object="favorite" />
+      ) : fetch_favorite_items_status === "pending" ? (
+        <Skeleton key={nanoid()} />
       ) : (
         <div className="favorite_card_wrapper">
           {favorites &&

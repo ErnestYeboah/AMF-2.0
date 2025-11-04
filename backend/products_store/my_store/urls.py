@@ -9,6 +9,8 @@ router.register("me", UserProfileViewset, basename="me")
 router.register("cart", CartViewset , basename="cart")
 router.register("favorite", FavoriteModelViewset, basename="favorite")
 router.register("address", CheckoutAddressViewset, basename="address")
+router.register("history", HistoryViewset, basename="history")
+
 
 urlpatterns = [
     path('', include(router.urls)),

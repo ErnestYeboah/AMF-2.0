@@ -34,9 +34,9 @@
 .otp_verify_section {
   width: 90%;
   margin: 4rem auto;
-  display: grid;
   justify-items: center;
   text-align: center;
+  min-height: 80vh;
 }
 
 .input {
@@ -75,6 +75,6 @@
 }
 
 .signin_section {
-  margin: 4rem auto;
+  margin: 2rem auto;
   width: 70%;
 }

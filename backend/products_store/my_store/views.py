@@ -11,6 +11,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication 
 from rest_framework import filters
+from datetime import timedelta
 # Create your views here.
 class UserViewset(ModelViewSet):
     queryset = CustomUser.objects.all()
@@ -93,6 +94,68 @@ class UserViewset(ModelViewSet):
             {"message": "Password set successfully. You can now log in."},
             status=status.HTTP_200_OK,
         )
+
+
+    @action(detail=False, methods=["post"], permission_classes=[IsAuthenticated] ,authentication_classes = [TokenAuthentication])
+    def request_password_change_otp(self, request):
+        """Step 1: Send OTP to logged-in user's email"""
+        user = request.user
+        otp = user.generate_otp()
+
+        send_mail(
+            subject="Password Change OTP",
+            message=f"Your OTP for password change is {otp}. It expires in 5 minutes.",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+        )
+
+        return Response({"message": "OTP sent to your email."}, status=200)
+
+
+    @action(detail=False, methods=["post"], permission_classes=[IsAuthenticated], authentication_classes = [TokenAuthentication])
+    def verify_password_change_otp(self, request):
+        """Step 2: Verify OTP"""
+        serializer = OTPVerifySerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        otp = serializer.validated_data["otp"]
+        user = request.user
+
+        if not user.verify_otp(otp):
+            return Response({"error": "Invalid or expired OTP."}, status=400)
+
+        user.otp_verified_for_password_change = True
+        user.otp_verified_at = timezone.now()
+        user.save()
+
+        return Response({"message": "OTP verified. You can now change your password."}, status=200)
+
+
+    @action(detail=False, methods=["post"], permission_classes=[IsAuthenticated], authentication_classes=[TokenAuthentication])
+    def change_password(self, request):
+        """Step 3: Change password if OTP verified recently"""
+        user = request.user
+
+        # Check if OTP was verified and still valid (within 10 mins)
+        if not user.otp_verified_for_password_change:
+            return Response({"error": "OTP not verified."}, status=400)
+
+        if user.otp_verified_at < timezone.now() - timedelta(minutes=10):
+            user.otp_verified_for_password_change = False
+            user.save()
+            return Response({"error": "OTP verification expired."}, status=400)
+
+        # Validate new password
+        serializer = SetPasswordSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        password = serializer.validated_data["password"]
+
+        user.set_password(password)
+        user.otp_verified_for_password_change = False  # reset flag
+        user.save()
+
+        return Response({"message": "Password changed successfully!"}, status=200)
+
     
 
 class UserProfileViewset(ModelViewSet):
@@ -191,3 +254,9 @@ class CheckoutAddressViewset(ModelViewSet):
                     {"message": "Address created", "address": serializer.data},
                     status=status.HTTP_201_CREATED,
                 )
+
+class HistoryViewset(ModelViewSet):
+    queryset = History.objects.all()
+    serializer_class = HistorySerializer
+    permission_classes = [IsAuthenticated, ]
+    authentication_classes = [TokenAuthentication , ]

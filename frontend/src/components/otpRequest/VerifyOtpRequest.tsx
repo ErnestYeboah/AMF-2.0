@@ -12,7 +12,7 @@ import {
 } from "../../features/OtpRequestSlice";
 import Box from "@mui/material/Box";
 import LinearProgress from "@mui/material/LinearProgress";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { nanoid } from "@reduxjs/toolkit";
 type OTPProps = GetProps<typeof Input.OTP>;
 
@@ -27,28 +27,13 @@ const VerifyOtpRequest = () => {
     useSelector(otp_request_data);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [verifyOtpGeneratedUrlToken] = useCookies([
-    "verifyOtpGeneratedUrlToken",
-  ]);
 
-  const [, setPasswordGeneratedUrlToken] = useCookies([
-    "setPasswordGeneratedUrlToken",
-  ]);
   // for url generated token
   const setPasswordTokenRef = useRef(nanoid());
 
   let timer: any;
-  const { token: verifyOtpUrlToken } = useParams();
 
   // VERIFY IF URL TOKEN MATCHES THE COOKIE TOKEN
-  useEffect(() => {
-    if (
-      verifyOtpGeneratedUrlToken["verifyOtpGeneratedUrlToken"] !==
-      verifyOtpUrlToken
-    ) {
-      navigate("/:token/identification");
-    }
-  }, [verifyOtpUrlToken]);
 
   const onChange: OTPProps["onChange"] = (text) => {
     console.log("onChange:", text);
@@ -57,11 +42,7 @@ const VerifyOtpRequest = () => {
 
   useEffect(() => {
     if (verify_otp_request_status == "success") {
-      setPasswordGeneratedUrlToken(
-        "setPasswordGeneratedUrlToken",
-        setPasswordTokenRef.current
-      );
-      navigate(`/${setPasswordTokenRef}/set_password`);
+      navigate(`/${setPasswordTokenRef.current}/set_password`);
     }
   }, [verify_otp_request_status, navigate]);
 

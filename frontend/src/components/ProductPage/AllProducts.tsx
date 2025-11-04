@@ -10,14 +10,16 @@ const AllProducts = () => {
 
   return (
     <>
-      {fetch_product_status === "pending" && <Skeleton />}
-
-      <div className="product_card_wrapper">
-        {products &&
-          products.map((product, _) => (
-            <ProductCard data={product} key={nanoid()} />
-          ))}
-      </div>
+      {fetch_product_status === "pending" ? (
+        <Skeleton key={nanoid()} />
+      ) : (
+        <div className="product_card_wrapper">
+          {products &&
+            products.map((product, _) => (
+              <ProductCard data={product} key={nanoid()} />
+            ))}
+        </div>
+      )}
     </>
   );
 };

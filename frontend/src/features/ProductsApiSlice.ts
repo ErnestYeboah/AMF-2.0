@@ -3,6 +3,12 @@ import axios from "axios";
 import { BASE_URL } from "./OtpRequestSlice";
 import { toast } from "react-toastify";
 
+export type History = {
+  id: number;
+  product_id: number;
+  product_name: string;
+};
+
 export type Product = {
   id: number;
   brief_note: string;
@@ -27,6 +33,8 @@ interface State {
   search_by_name_status: "idle" | "pending" | "success" | "failed";
   get_user_profile_status: "idle" | "pending" | "success" | "failed";
   update_user_profile_image_status: "idle" | "pending" | "success" | "failed";
+  get_history_list_status: "idle" | "pending" | "success" | "failed";
+  delete_account_status: "idle" | "pending" | "success" | "failed";
   products: Product[];
   userProfile: User[];
   categoryProducts: Product[];
@@ -35,6 +43,9 @@ interface State {
   clothing_size: string;
   shoe_size: string;
   search_value: string;
+  history: History[];
+  deleteAccountModalView: boolean;
+  currentView: number;
 }
 
 const initialState: State = {
@@ -43,6 +54,8 @@ const initialState: State = {
   search_by_name_status: "idle",
   get_user_profile_status: "idle",
   update_user_profile_image_status: "idle",
+  get_history_list_status: "idle",
+  delete_account_status: "idle",
   products: [],
   searchedProducts: [],
   userProfile: [],
@@ -51,6 +64,9 @@ const initialState: State = {
   clothing_size: "",
   shoe_size: "",
   search_value: "",
+  history: [],
+  deleteAccountModalView: false,
+  currentView: 0,
 };
 
 export const getUserProfile: any = createAsyncThunk(
@@ -83,6 +99,22 @@ export const updateProfileImage: any = createAsyncThunk(
           },
         }
       );
+      return response.data;
+    }
+  }
+);
+
+export const deleteUserAccount: any = createAsyncThunk(
+  "delete_account",
+  async (payload: { token: string; id: string }) => {
+    const { id, token } = payload;
+    if (token) {
+      const response = await axios.delete(`${BASE_URL}/users/${id}/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
       return response.data;
     }
   }
@@ -122,7 +154,41 @@ export const searchByName: any = createAsyncThunk(
         }
       );
 
-      console.log(response.data);
+      return response.data;
+    }
+  }
+);
+
+export const getHistoryList: any = createAsyncThunk(
+  "get_history",
+  async (token: string) => {
+    if (token) {
+      const response = await axios.get(`${BASE_URL}/history/`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      return response.data;
+    }
+  }
+);
+
+type HistoryPayload = {
+  token: string;
+  values: { product_id: string; product_name: string };
+};
+export const updateHistoryList: any = createAsyncThunk(
+  "update_history_list",
+  async (payload: HistoryPayload) => {
+    const { token, values } = payload;
+    if (token) {
+      const response = await axios.post(`${BASE_URL}/history/`, values, {
+        headers: {
+          Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       return response.data;
     }
   }
@@ -144,6 +210,15 @@ export const ProductApiSlice = createSlice({
     getSearchValue(state, action) {
       state.search_value = action.payload;
     },
+
+    toggleDeleteAccountModalView(state, action) {
+      state.deleteAccountModalView = action.payload;
+      state.currentView = 0;
+    },
+
+    slideToConfirmDeleteModal(state) {
+      state.currentView = 1;
+    },
   },
   extraReducers(builder) {
     builder
@@ -161,7 +236,7 @@ export const ProductApiSlice = createSlice({
 
       //   updating profile image
       .addCase(updateProfileImage.pending, (state) => {
-        state.get_user_profile_status = "pending";
+        state.update_user_profile_image_status = "pending";
       })
       .addCase(updateProfileImage.fulfilled, (state, action) => {
         state.update_user_profile_image_status = "success";
@@ -170,6 +245,20 @@ export const ProductApiSlice = createSlice({
       .addCase(updateProfileImage.rejected, (state) => {
         state.update_user_profile_image_status = "failed";
         toast.error("Couldn't set profile image , try again later");
+      })
+
+      //   delete user account
+      .addCase(deleteUserAccount.pending, (state) => {
+        state.delete_account_status = "pending";
+      })
+      .addCase(deleteUserAccount.fulfilled, (state) => {
+        state.delete_account_status = "success";
+        toast.success("Account has been deleted", { hideProgressBar: true });
+        state.userProfile = [];
+      })
+      .addCase(deleteUserAccount.rejected, (state) => {
+        state.delete_account_status = "failed";
+        toast.error("Couldn't delete account  , try again later");
       })
 
       //   fetching products data
@@ -214,6 +303,29 @@ export const ProductApiSlice = createSlice({
       })
       .addCase(searchByName.rejected, (state) => {
         state.search_by_name_status = "failed";
+      })
+
+      //   get history list
+      .addCase(getHistoryList.pending, (state) => {
+        state.get_history_list_status = "pending";
+      })
+      .addCase(getHistoryList.fulfilled, (state, action) => {
+        state.get_history_list_status = "success";
+        state.history = action.payload;
+      })
+      .addCase(getHistoryList.rejected, (state) => {
+        state.get_history_list_status = "failed";
+      })
+
+      //   update history list
+      .addCase(updateHistoryList.pending, (state) => {
+        state.get_history_list_status = "pending";
+      })
+      .addCase(updateHistoryList.fulfilled, (state, action) => {
+        state.history.push(action.payload);
+      })
+      .addCase(updateHistoryList.rejected, (state) => {
+        state.get_history_list_status = "failed";
       });
   },
 });
@@ -224,6 +336,9 @@ export const {
   getClothingSize,
   getShoeSize,
   getSearchValue,
+  toggleDeleteAccountModalView,
+  slideToConfirmDeleteModal,
 } = ProductApiSlice.actions;
+
 export const product_data = (state: { product_api: State }) =>
   state.product_api;

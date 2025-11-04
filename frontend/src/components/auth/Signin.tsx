@@ -19,9 +19,9 @@ const Signin = () => {
   const { signin_status, token } = useSelector(signinSliceData);
   const dispatch = useDispatch();
   const [, setCookie] = useCookies(["token"]);
-  const [, setGeneratedUrlTokenCookie] = useCookies(["generatedUrlToken"]);
   const navigate = useNavigate();
   const idRef = useRef(nanoid());
+  const [cookie] = useCookies(["email"]);
 
   const signin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,11 +36,6 @@ const Signin = () => {
       duration: 0,
     });
   };
-
-  function generateUrlToken() {
-    const urlToken = idRef.current;
-    setGeneratedUrlTokenCookie("generatedUrlToken", urlToken, { path: "/" });
-  }
 
   useEffect(() => {
     if (signin_status == "pending") {
@@ -94,13 +89,23 @@ const Signin = () => {
         <p>
           Do not have an account ,{" "}
           <Link
-            onClick={generateUrlToken}
             className="text-[var(--accent-color)]"
             to={`/${idRef.current}/identification`}
           >
             Sign Up
           </Link>
         </p>
+        {cookie["email"] && (
+          <p>
+            We noticed you didn't set a password ,{" "}
+            <Link
+              className="text-[var(--accent-color)]"
+              to={`/${idRef.current}/set_password`}
+            >
+              Create Password
+            </Link>
+          </p>
+        )}
         <button>Sign In</button>
         {contextHolder}
       </form>

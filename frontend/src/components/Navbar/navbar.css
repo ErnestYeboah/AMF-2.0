@@ -19,7 +19,7 @@ nav {
 }
 
 .profile_modal {
-  width: 250px;
+  min-width: 250px;
   background-color: var(--primary-color);
   position: fixed;
   font-size: var(--step-1);

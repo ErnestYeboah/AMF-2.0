@@ -5,12 +5,18 @@ import { useCookies } from "react-cookie";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import CheckIcon from "@mui/icons-material/Check";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setNewPassword } from "../../features/OtpRequestSlice";
+import { product_data } from "../../features/ProductsApiSlice";
+import {
+  otp_request_data,
+  resetPassword,
+} from "../../features/OtpRequestSlice";
 
-const PasswordSet = () => {
-  const [cookie, , removeCookie] = useCookies(["email"]);
+const PasswordReset = () => {
+  const [cookie] = useCookies(["token"]);
+  const { userProfile } = useSelector(product_data);
+  const { reset_password_status } = useSelector(otp_request_data);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [password_legth_status, setPasswordLengthStatus] = useState("");
@@ -18,19 +24,13 @@ const PasswordSet = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!cookie["email"]) {
-      navigate("/signin");
-    }
-  }, [cookie]);
-
   function errorMessage(message: string) {
     toast.error(message, {
       hideProgressBar: true,
       autoClose: 1000,
     });
   }
-  const createAccount = (e: React.FormEvent<HTMLFormElement>) => {
+  const changePassword = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password) {
       if (password !== confirmPassword) {
@@ -41,16 +41,25 @@ const PasswordSet = () => {
         return false;
       } else {
         dispatch(
-          setNewPassword({ email: cookie["email"], password: password })
+          resetPassword({
+            token: cookie["token"],
+            email: userProfile[0]?.email,
+            password: password,
+            confirm_password: confirmPassword,
+          })
         );
-        removeCookie("email");
-        navigate("/signin");
         return true;
       }
     } else {
       errorMessage("Please create a new password to continue");
     }
   };
+
+  useEffect(() => {
+    if (reset_password_status === "success") {
+      navigate("/my_account");
+    }
+  }, [reset_password_status]);
 
   const getPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const typing_password = e.currentTarget.value;
@@ -73,12 +82,18 @@ const PasswordSet = () => {
       <Logo />
       <p>
         Your email{" "}
-        <span className="text-[var(--accent-color)]">{cookie["email"]}</span>{" "}
-        has been verified successfully , please set your password to continue
+        <span className="text-[var(--accent-color)]">
+          {userProfile[0]?.email}
+        </span>{" "}
+        has been verified successfully ,you can now reset your password
       </p>
-      <form onSubmit={createAccount}>
+      <form onSubmit={changePassword}>
         <Space direction="vertical">
-          <Input className="input" placeholder={cookie["email"]} readOnly />
+          <Input
+            className="input"
+            placeholder={userProfile[0]?.email}
+            readOnly
+          />
         </Space>
 
         <Space direction="vertical">
@@ -119,4 +134,4 @@ const PasswordSet = () => {
   );
 };
 
-export default PasswordSet;
+export default PasswordReset;

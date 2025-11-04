@@ -1,4 +1,5 @@
 import { memo, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 const VideoBackground = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -7,6 +8,8 @@ const VideoBackground = () => {
     const video = videoRef.current as HTMLVideoElement;
     video.play().catch(() => console.log("Autoplay prevented"));
   }, []);
+
+  const navigate = useNavigate();
 
   return (
     <div className="background_video_wrapper">
@@ -23,7 +26,7 @@ const VideoBackground = () => {
         <p>
           You can have anything you want in life if you dress for it ~Edith Head
         </p>
-        <button>Shop Now</button>
+        <button onClick={() => navigate("/products")}>Shop Now</button>
       </div>
     </div>
   );

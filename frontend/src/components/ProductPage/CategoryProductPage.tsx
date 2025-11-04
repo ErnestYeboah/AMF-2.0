@@ -7,6 +7,7 @@ import {
 } from "../../features/ProductsApiSlice";
 import ProductCard from "./ProductCard";
 import Skeleton from "../utils/Skeleton";
+import { nanoid } from "@reduxjs/toolkit";
 
 const CategoryProductPage = () => {
   const dispatch = useDispatch();
@@ -22,13 +23,16 @@ const CategoryProductPage = () => {
 
   return (
     <>
-      {search_by_category_status === "pending" && <Skeleton />}
-      <div className="product_card_wrapper">
-        {categoryProducts &&
-          categoryProducts.map((product, index) => (
-            <ProductCard data={product} key={index} />
-          ))}
-      </div>
+      {search_by_category_status === "pending" ? (
+        <Skeleton key={nanoid()} />
+      ) : (
+        <div className="product_card_wrapper">
+          {categoryProducts &&
+            categoryProducts.map((product, index) => (
+              <ProductCard data={product} key={index} />
+            ))}
+        </div>
+      )}
     </>
   );
 };
