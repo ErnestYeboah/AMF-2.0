@@ -358,7 +358,7 @@ export const CartSlice = createSlice({
       .addCase(updateItemQuantity.fulfilled, (state, action) => {
         state.update_item_quantity_status = "success";
         const foundItemIndex = state.cart.findIndex(
-          (item) => item.name === action.payload.name
+          (item) => item.id === action.payload.id
         );
         state.cart.splice(foundItemIndex, 1, action.payload);
         showToast("success", "changes applied successfully");

@@ -10,6 +10,7 @@ import {
   type LocalCartState,
 } from "../../features/CartSlice";
 import { nanoid } from "@reduxjs/toolkit";
+import "./products_page.css";
 
 const DetailedProductCard = () => {
   const { product_name } = useParams();
@@ -18,6 +19,13 @@ const DetailedProductCard = () => {
   const [cookie] = useCookies(["token"]);
   const [sizeError, setSizeError] = useState("");
   const dispatch = useDispatch();
+
+  const decrementQuantity = () => {
+    setQuantity((c) => (c <= 1 ? 1 : c - 1));
+  };
+  const incrementQuantity = () => {
+    setQuantity((c) => c + 1);
+  };
 
   const foundCard = products.find((product) => product.name === product_name);
 
@@ -97,14 +105,6 @@ const DetailedProductCard = () => {
     }
   }
 
-  const getQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const _t = Number(e.target.value);
-    if (_t < 1) setQuantity(1);
-    else {
-      setQuantity(_t);
-    }
-  };
-
   return (
     <div className="detailed_product_card">
       <figure>
@@ -140,16 +140,10 @@ const DetailedProductCard = () => {
         />
         <p className="text-red-600">{sizeError}</p>
         <p>{foundCard?.description}</p>
-        <div className="qty_input">
-          <label htmlFor="quantity">Qty:</label>
-          <input
-            type="number"
-            value={quantity}
-            onChange={getQuantity}
-            min={1}
-            name="quantity"
-            required
-          />
+        <div className="quantity_state">
+          <button onClick={decrementQuantity}> - </button>
+          <p>{quantity}</p>
+          <button onClick={incrementQuantity}>+</button>
         </div>
         <button
           onClick={

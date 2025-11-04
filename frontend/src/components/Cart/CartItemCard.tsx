@@ -20,15 +20,26 @@ const CartItemCard = ({ data }: { data: Cart }) => {
   const dispatch = useDispatch();
   const foundProduct = products.find((item) => item.id === product_id);
 
-  const getNewQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewQuantity(e.target.valueAsNumber);
-    const _t = Number(e.target.value);
-    // update the api quantity
+  const decrementQuantity = () => {
+    setNewQuantity((c) => (c <= 1 ? 1 : c - 1));
+    if (newQuantity === 1) return;
+    else {
+      dispatch(
+        updateItemQuantity({
+          token: cookie["token"],
+          id: id,
+          quantity: newQuantity <= 1 ? 1 : newQuantity - 1,
+        })
+      );
+    }
+  };
+  const incrementQuantity = () => {
+    setNewQuantity((c) => c + 1);
     dispatch(
       updateItemQuantity({
         token: cookie["token"],
         id: id,
-        quantity: _t < 1 ? 1 : _t,
+        quantity: newQuantity + 1,
       })
     );
   };
@@ -44,14 +55,10 @@ const CartItemCard = ({ data }: { data: Cart }) => {
           <h2>{name}</h2>
           <p className="opacity-30">{category}</p>
           <p>Size : {size}</p>
-          <div className="qty_input">
-            <label htmlFor="quantity">Qty:</label>
-            <input
-              min={1}
-              type="number"
-              value={newQuantity}
-              onChange={getNewQuantity}
-            />
+          <div className="quantity_state">
+            <button onClick={decrementQuantity}> - </button>
+            <p>{newQuantity}</p>
+            <button onClick={incrementQuantity}>+</button>
             {update_item_quantity_status === "pending" && <Spin />}
           </div>
         </div>
