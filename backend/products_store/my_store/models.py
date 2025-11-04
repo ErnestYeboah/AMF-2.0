@@ -26,7 +26,7 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(unique=True)
-    profile_image = models.ImageField(blank=True, null=True , default='none')
+    profile_image = models.ImageField(blank=True, null=True )
     otp = models.CharField(max_length=6, blank=True, null=True)
     otp_expiry = models.DateTimeField(blank=True, null=True)
     otp_verified_for_password_change = models.BooleanField(default=False)
