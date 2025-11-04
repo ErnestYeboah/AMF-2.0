@@ -22,12 +22,13 @@ const CartItemCard = ({ data }: { data: Cart }) => {
 
   const getNewQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewQuantity(e.target.valueAsNumber);
+    const _t = Number(e.target.value);
     // update the api quantity
     dispatch(
       updateItemQuantity({
         token: cookie["token"],
         id: id,
-        quantity: e.target.value,
+        quantity: _t < 1 ? 1 : _t,
       })
     );
   };

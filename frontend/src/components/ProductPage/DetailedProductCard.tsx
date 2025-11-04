@@ -97,10 +97,18 @@ const DetailedProductCard = () => {
     }
   }
 
+  const getQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const _t = Number(e.target.value);
+    if (_t < 1) setQuantity(1);
+    else {
+      setQuantity(_t);
+    }
+  };
+
   return (
     <div className="detailed_product_card">
       <figure>
-        <img src={foundCard?.image} alt={foundCard?.name} loading="lazy" />
+        <img src={foundCard?.image} alt="" loading="lazy" />
       </figure>
       <div className="card_details">
         <div className="card_details_flex">
@@ -137,7 +145,7 @@ const DetailedProductCard = () => {
           <input
             type="number"
             value={quantity}
-            onChange={(e) => setQuantity(Number(e.target.value))}
+            onChange={getQuantity}
             min={1}
             name="quantity"
             required
