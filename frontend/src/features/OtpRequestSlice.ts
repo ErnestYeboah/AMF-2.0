@@ -207,6 +207,9 @@ export const OtpRequestSlice = createSlice({
     changeProgressState(state) {
       state.send_reset_password_otp_status = "idle";
     },
+    changeSendOtpRequestState(state) {
+      state.send_otp_request_status = "idle";
+    },
   },
   extraReducers(builder) {
     builder
@@ -299,6 +302,7 @@ export const OtpRequestSlice = createSlice({
 });
 
 export default OtpRequestSlice.reducer;
-export const { changeProgressState } = OtpRequestSlice.actions;
+export const { changeProgressState, changeSendOtpRequestState } =
+  OtpRequestSlice.actions;
 export const otp_request_data = (state: { otp_request_api: State }) =>
   state.otp_request_api;

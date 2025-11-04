@@ -25,7 +25,6 @@ const SendOtpRequest = () => {
   const send_otp_request = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email && email.includes("@") && email.endsWith("gmail.com")) {
-      setCookie("email", email, { path: "/" });
       dispatch(sendOtpRequest(email));
       return true;
     } else {
@@ -40,6 +39,7 @@ const SendOtpRequest = () => {
         navigate("/signin");
         return;
       } else {
+        setCookie("email", email, { path: "/" });
         navigate(`/${verifyOtpRef.current}/verify_otp`);
       }
     }

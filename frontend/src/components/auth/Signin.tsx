@@ -11,6 +11,10 @@ import {
 import { message } from "antd";
 import { useCookies } from "react-cookie";
 import { nanoid } from "@reduxjs/toolkit";
+import {
+  changeSendOtpRequestState,
+  otp_request_data,
+} from "../../features/OtpRequestSlice";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -22,6 +26,13 @@ const Signin = () => {
   const navigate = useNavigate();
   const idRef = useRef(nanoid());
   const [cookie] = useCookies(["email"]);
+  const { send_otp_request_status } = useSelector(otp_request_data);
+
+  useEffect(() => {
+    if (send_otp_request_status === "success") {
+      dispatch(changeSendOtpRequestState());
+    }
+  }, [send_otp_request_status]);
 
   const signin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
