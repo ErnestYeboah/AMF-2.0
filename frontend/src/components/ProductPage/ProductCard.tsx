@@ -62,7 +62,7 @@ const ProductCard = ({ data }: { data: Product }) => {
     <div className="product_card">
       <figure onClick={addToHistoryList}>
         <Link to={`/product/${name}`}>
-          <img src={image} alt={name} />
+          <img src={image} alt={name} loading="lazy" />
         </Link>
       </figure>
       <div className="product_text space-y-1">

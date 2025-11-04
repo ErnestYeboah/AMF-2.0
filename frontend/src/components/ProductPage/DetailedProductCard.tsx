@@ -100,7 +100,7 @@ const DetailedProductCard = () => {
   return (
     <div className="detailed_product_card">
       <figure>
-        <img src={foundCard?.image} alt="" />
+        <img src={foundCard?.image} alt={foundCard?.name} loading="lazy" />
       </figure>
       <div className="card_details">
         <div className="card_details_flex">
