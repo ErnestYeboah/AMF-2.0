@@ -213,6 +213,7 @@ export const OtpRequestSlice = createSlice({
   },
   extraReducers(builder) {
     builder
+
       .addCase(sendOtpRequest.pending, (state) => {
         state.send_otp_request_status = "pending";
       })

@@ -245,3 +245,23 @@
     }
   }
 }
+
+.google_signin_btn {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: var(--mini-padding);
+  margin-top: var(--mini-padding);
+  background-color: transparent;
+  color: var(--text-color);
+  outline: 1px solid var(--accent-color);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  margin-inline: auto;
+
+  & img {
+    width: 30px;
+  }
+}

@@ -11,9 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,6 +26,10 @@ SECRET_KEY = 'django-insecure-v7m+4@cj0m&c&e9)j_k(76*_)z%^vf%b#gwx&ah_t!+s8zeost
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+
+
+
 
 
 # Application definition
@@ -158,6 +162,8 @@ EMAIL_PORT = 465
 # EMAIL_PORT = 587
 EMAIL_HOST_USER = "amaetonfashionhouse@gmail.com"
 EMAIL_HOST_PASSWORD = "mahwbixsrgrujesq"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "unsafe-none"
+
 
 
 # In production, use SMTP settings

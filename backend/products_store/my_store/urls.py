@@ -10,6 +10,7 @@ router.register("cart", CartViewset , basename="cart")
 router.register("favorite", FavoriteModelViewset, basename="favorite")
 router.register("address", CheckoutAddressViewset, basename="address")
 router.register("history", HistoryViewset, basename="history")
+router.register("auth", FirebaseAuthViewSet, basename="firebase-auth")
 
 
 urlpatterns = [
