@@ -1,2 +1,7 @@
 
+<<<<<<< HEAD
 firebase-key.json
+=======
+# Ignore Firebase service account key
+firebase/firebase-key.json
+>>>>>>> 8da40ad5f9f9d73b8ac20e7a91e6c059b9290a31
