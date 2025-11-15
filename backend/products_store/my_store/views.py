@@ -14,7 +14,6 @@ from rest_framework import filters
 from datetime import timedelta
 from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
-from firebase_admin import auth as firebase_auth
 
 
 User = get_user_model()
@@ -272,50 +271,50 @@ class HistoryViewset(ModelViewSet):
 
 
 
-class FirebaseAuthViewSet(ModelViewSet):
-    """
-    Handles Firebase login using ID token from frontend (Firebase Google Sign-In)
-    """
+# class FirebaseAuthViewSet(ModelViewSet):
+#     """
+#     Handles Firebase login using ID token from frontend (Firebase Google Sign-In)
+#     """
 
-    @action(detail=False, methods=["post"])
-    def firebase_login(self, request):
-        """Authenticate using Firebase token"""
-        id_token = request.data.get("token")
+#     @action(detail=False, methods=["post"])
+#     def firebase_login(self, request):
+#         """Authenticate using Firebase token"""
+#         id_token = request.data.get("token")
 
-        if not id_token:
-            return Response({"error": "Token is required"}, status=400)
+#         if not id_token:
+#             return Response({"error": "Token is required"}, status=400)
 
-        try:
-            # 🔹 Verify token with Firebase
-            decoded_token = firebase_auth.verify_id_token(id_token)
-            email = decoded_token.get("email")
-            uid = decoded_token.get("uid")
-            name = decoded_token.get("name", "")
+#         try:
+#             # 🔹 Verify token with Firebase
+#             decoded_token = firebase_auth.verify_id_token(id_token)
+#             email = decoded_token.get("email")
+#             uid = decoded_token.get("uid")
+#             name = decoded_token.get("name", "")
 
-            if not email:
-                return Response({"error": "No email found in token"}, status=400)
+#             if not email:
+#                 return Response({"error": "No email found in token"}, status=400)
 
-            # 🔹 Get or create user in Django
-            user, created = User.objects.get_or_create(
-                email=email,
-                defaults={"is_active": True},
-            )
+#             # 🔹 Get or create user in Django
+#             user, created = User.objects.get_or_create(
+#                 email=email,
+#                 defaults={"is_active": True},
+#             )
 
-            # 🔹 Create / get DRF token
-            token, _ = Token.objects.get_or_create(user=user)
+#             # 🔹 Create / get DRF token
+#             token, _ = Token.objects.get_or_create(user=user)
 
-            return Response(
-                {
-                    "message": "Login successful",
-                    "token": token.key,
-                    "user": {
-                        "id": user.id,
-                        "email": user.email,
-                        "username": user.username,
-                    },
-                },
-                status=status.HTTP_200_OK,
-            )
+#             return Response(
+#                 {
+#                     "message": "Login successful",
+#                     "token": token.key,
+#                     "user": {
+#                         "id": user.id,
+#                         "email": user.email,
+#                         "username": user.username,
+#                     },
+#                 },
+#                 status=status.HTTP_200_OK,
+#             )
 
-        except Exception as e:
-            return Response({"error": str(e)}, status=400)
+#         except Exception as e:
+#             return Response({"error": str(e)}, status=400)
