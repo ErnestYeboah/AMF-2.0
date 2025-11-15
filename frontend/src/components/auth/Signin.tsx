@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  handleGoogleSignIn,
   signinSliceData,
   signinWithCredentials,
 } from "../../features/SigninSlice";
@@ -21,8 +20,7 @@ const Signin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [messageApi, contextHolder] = message.useMessage();
-  const { signin_status, token, google_token, google_signin_status } =
-    useSelector(signinSliceData);
+  const { signin_status, token } = useSelector(signinSliceData);
   const dispatch = useDispatch();
   const [, setCookie] = useCookies(["token"]);
   const navigate = useNavigate();
@@ -61,22 +59,6 @@ const Signin = () => {
       messageApi.destroy();
     }
   }, [signin_status, token]);
-
-  const signInWithGoogle = () => {
-    dispatch(handleGoogleSignIn());
-  };
-
-  useEffect(() => {
-    if (google_signin_status == "pending") {
-      success();
-    } else if (google_signin_status == "success" && google_token) {
-      messageApi.destroy();
-      setCookie("token", google_token);
-      navigate("/");
-    } else if (google_signin_status == "failed") {
-      messageApi.destroy();
-    }
-  }, [google_signin_status, google_token]);
 
   return (
     <div className="signin_section">
@@ -138,16 +120,6 @@ const Signin = () => {
         <button>Sign In</button>
         {contextHolder}
       </form>
-      <button className=" google_signin_btn " onClick={signInWithGoogle}>
-        <figure>
-          <img
-            className="google_icon"
-            src="/assests/icons8-google.svg"
-            alt=""
-          />
-        </figure>
-        Continue with Google
-      </button>
     </div>
   );
 };
