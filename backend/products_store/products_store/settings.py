@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
@@ -66,6 +67,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://amaetonhouse.vercel.app",
    
 ]
+
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "unsafe-none"
+
 
 CORS_ALLOW_METHODS = (
     "DELETE",
@@ -172,3 +176,8 @@ DEFAULT_FROM_EMAIL = 'amaetonfashionhouse@gmail.com'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+from .firebase_config import *
+
+

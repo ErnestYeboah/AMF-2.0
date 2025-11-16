@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  handleGoogleSignIn,
   signinSliceData,
   signinWithCredentials,
 } from "../../features/SigninSlice";
@@ -120,6 +121,15 @@ const Signin = () => {
         <button>Sign In</button>
         {contextHolder}
       </form>
+      <button
+        onClick={() => dispatch(handleGoogleSignIn())}
+        className="google_signin_btn"
+      >
+        <figure>
+          <img src="/assests/icons8-google.svg" alt="google_logo" />
+        </figure>
+        Continue with Google
+      </button>
     </div>
   );
 };
