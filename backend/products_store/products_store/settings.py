@@ -15,6 +15,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 from dotenv import load_dotenv
 load_dotenv()
+from .firebase_config import *
 
 
 # Quick-start development settings - unsuitable for production
@@ -178,6 +179,5 @@ DEFAULT_FROM_EMAIL = 'amaetonfashionhouse@gmail.com'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-from .firebase_config import *
 
 

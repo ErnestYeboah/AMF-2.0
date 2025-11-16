@@ -1,0 +1,1605 @@
+2025-11-15 11:54:34,826: Error running WSGI application
+2025-11-15 11:54:34,847: ModuleNotFoundError: No module named 'firebase_admin'
+2025-11-15 11:54:34,847:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/wsgi.py", line 124, in __call__
+2025-11-15 11:54:34,848:     response = self.get_response(request)
+2025-11-15 11:54:34,848: 
+2025-11-15 11:54:34,848:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 140, in get_response
+2025-11-15 11:54:34,848:     response = self._middleware_chain(request)
+2025-11-15 11:54:34,848: 
+2025-11-15 11:54:34,848:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 57, in inner
+2025-11-15 11:54:34,848:     response = response_for_exception(request, exc)
+2025-11-15 11:54:34,848: 
+2025-11-15 11:54:34,848:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+2025-11-15 11:54:34,848:     response = handle_uncaught_exception(
+2025-11-15 11:54:34,848:         request, get_resolver(get_urlconf()), sys.exc_info()
+2025-11-15 11:54:34,848:     )
+2025-11-15 11:54:34,849: 
+2025-11-15 11:54:34,849:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+2025-11-15 11:54:34,849:     return debug.technical_500_response(request, *exc_info)
+2025-11-15 11:54:34,849:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:34,849: 
+2025-11-15 11:54:34,849:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 69, in technical_500_response
+2025-11-15 11:54:34,849:     html = reporter.get_traceback_html()
+2025-11-15 11:54:34,849: 
+2025-11-15 11:54:34,849:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 428, in get_traceback_html
+2025-11-15 11:54:34,849:     c = Context(self.get_traceback_data(), use_l10n=False)
+2025-11-15 11:54:34,849:                 ~~~~~~~~~~~~~~~~~~~~~~~^^
+2025-11-15 11:54:34,849: 
+2025-11-15 11:54:34,850:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 411, in get_traceback_data
+2025-11-15 11:54:34,850:     c["raising_view_name"] = get_caller(self.request)
+2025-11-15 11:54:34,850:                              ~~~~~~~~~~^^^^^^^^^^^^^^
+2025-11-15 11:54:34,850: 
+2025-11-15 11:54:34,850:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 102, in get_caller
+2025-11-15 11:54:34,850:     resolver_match = resolve(request.path)
+2025-11-15 11:54:34,850: 
+2025-11-15 11:54:34,850:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/base.py", line 25, in resolve
+2025-11-15 11:54:34,850:     return get_resolver(urlconf).resolve(path)
+2025-11-15 11:54:34,850:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-15 11:54:34,850: 
+2025-11-15 11:54:34,850:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 666, in resolve
+2025-11-15 11:54:34,851:     for pattern in self.url_patterns:
+2025-11-15 11:54:34,851:                    ^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:34,851: 
+2025-11-15 11:54:34,851:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+2025-11-15 11:54:34,851:     res = instance.__dict__[self.name] = self.func(instance)
+2025-11-15 11:54:34,851:                                          ~~~~~~~~~^^^^^^^^^^
+2025-11-15 11:54:34,851: 
+2025-11-15 11:54:34,851:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 718, in url_patterns
+2025-11-15 11:54:34,851:     patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+2025-11-15 11:54:34,851:                        ^^^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:34,851: 
+2025-11-15 11:54:34,852:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+2025-11-15 11:54:34,852:     res = instance.__dict__[self.name] = self.func(instance)
+2025-11-15 11:54:34,852:                                          ~~~~~~~~~^^^^^^^^^^
+2025-11-15 11:54:34,852: 
+2025-11-15 11:54:34,852:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+2025-11-15 11:54:34,852:     return import_module(self.urlconf_name)
+2025-11-15 11:54:34,852: 
+2025-11-15 11:54:34,852:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/urls.py", line 25, in <module>
+2025-11-15 11:54:34,853:     path('api/' , include('my_store.urls')),
+2025-11-15 11:54:34,853:                   ~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:34,853: 
+2025-11-15 11:54:34,853:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+2025-11-15 11:54:34,853:     urlconf_module = import_module(urlconf_module)
+2025-11-15 11:54:34,853: 
+2025-11-15 11:54:34,853:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/my_store/urls.py", line 3, in <module>
+2025-11-15 11:54:34,853:     from .views import *
+2025-11-15 11:54:34,854: 
+2025-11-15 11:54:34,854:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/my_store/views.py", line 17, in <module>
+2025-11-15 11:54:34,854:     from firebase_admin import auth as firebase_auth
+2025-11-15 11:54:47,558: Error running WSGI application
+2025-11-15 11:54:47,570: ModuleNotFoundError: No module named 'firebase_admin'
+2025-11-15 11:54:47,571:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/wsgi.py", line 124, in __call__
+2025-11-15 11:54:47,571:     response = self.get_response(request)
+2025-11-15 11:54:47,571: 
+2025-11-15 11:54:47,571:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 140, in get_response
+2025-11-15 11:54:47,571:     response = self._middleware_chain(request)
+2025-11-15 11:54:47,571: 
+2025-11-15 11:54:47,571:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 57, in inner
+2025-11-15 11:54:47,571:     response = response_for_exception(request, exc)
+2025-11-15 11:54:47,571: 
+2025-11-15 11:54:47,571:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+2025-11-15 11:54:47,571:     response = handle_uncaught_exception(
+2025-11-15 11:54:47,571:         request, get_resolver(get_urlconf()), sys.exc_info()
+2025-11-15 11:54:47,571:     )
+2025-11-15 11:54:47,572: 
+2025-11-15 11:54:47,572:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+2025-11-15 11:54:47,572:     return debug.technical_500_response(request, *exc_info)
+2025-11-15 11:54:47,572:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:47,572: 
+2025-11-15 11:54:47,572:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 69, in technical_500_response
+2025-11-15 11:54:47,572:     html = reporter.get_traceback_html()
+2025-11-15 11:54:47,572: 
+2025-11-15 11:54:47,572:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 428, in get_traceback_html
+2025-11-15 11:54:47,572:     c = Context(self.get_traceback_data(), use_l10n=False)
+2025-11-15 11:54:47,572:                 ~~~~~~~~~~~~~~~~~~~~~~~^^
+2025-11-15 11:54:47,572: 
+2025-11-15 11:54:47,572:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 411, in get_traceback_data
+2025-11-15 11:54:47,572:     c["raising_view_name"] = get_caller(self.request)
+2025-11-15 11:54:47,573:                              ~~~~~~~~~~^^^^^^^^^^^^^^
+2025-11-15 11:54:47,573: 
+2025-11-15 11:54:47,573:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 102, in get_caller
+2025-11-15 11:54:47,573:     resolver_match = resolve(request.path)
+2025-11-15 11:54:47,573: 
+2025-11-15 11:54:47,573:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/base.py", line 25, in resolve
+2025-11-15 11:54:47,573:     return get_resolver(urlconf).resolve(path)
+2025-11-15 11:54:47,573:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-15 11:54:47,573: 
+2025-11-15 11:54:47,573:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 666, in resolve
+2025-11-15 11:54:47,573:     for pattern in self.url_patterns:
+2025-11-15 11:54:47,573:                    ^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:47,573: 
+2025-11-15 11:54:47,574:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+2025-11-15 11:54:47,574:     res = instance.__dict__[self.name] = self.func(instance)
+2025-11-15 11:54:47,574:                                          ~~~~~~~~~^^^^^^^^^^
+2025-11-15 11:54:47,574: 
+2025-11-15 11:54:47,574:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 718, in url_patterns
+2025-11-15 11:54:47,574:     patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+2025-11-15 11:54:47,574:                        ^^^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:47,574: 
+2025-11-15 11:54:47,574:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+2025-11-15 11:54:47,574:     res = instance.__dict__[self.name] = self.func(instance)
+2025-11-15 11:54:47,574:                                          ~~~~~~~~~^^^^^^^^^^
+2025-11-15 11:54:47,574: 
+2025-11-15 11:54:47,574:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+2025-11-15 11:54:47,574:     return import_module(self.urlconf_name)
+2025-11-15 11:54:47,574: 
+2025-11-15 11:54:47,575:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/urls.py", line 25, in <module>
+2025-11-15 11:54:47,575:     path('api/' , include('my_store.urls')),
+2025-11-15 11:54:47,575:                   ~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:47,575: 
+2025-11-15 11:54:47,575:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+2025-11-15 11:54:47,575:     urlconf_module = import_module(urlconf_module)
+2025-11-15 11:54:47,575: 
+2025-11-15 11:54:47,575:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/my_store/urls.py", line 3, in <module>
+2025-11-15 11:54:47,575:     from .views import *
+2025-11-15 11:54:47,575: 
+2025-11-15 11:54:47,575:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/my_store/views.py", line 17, in <module>
+2025-11-15 11:54:47,575:     from firebase_admin import auth as firebase_auth
+2025-11-15 11:54:56,727: Error running WSGI application
+2025-11-15 11:54:56,745: ModuleNotFoundError: No module named 'firebase_admin'
+2025-11-15 11:54:56,746:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/wsgi.py", line 124, in __call__
+2025-11-15 11:54:56,746:     response = self.get_response(request)
+2025-11-15 11:54:56,746: 
+2025-11-15 11:54:56,746:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/base.py", line 140, in get_response
+2025-11-15 11:54:56,746:     response = self._middleware_chain(request)
+2025-11-15 11:54:56,746: 
+2025-11-15 11:54:56,746:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 57, in inner
+2025-11-15 11:54:56,746:     response = response_for_exception(request, exc)
+2025-11-15 11:54:56,746: 
+2025-11-15 11:54:56,746:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 141, in response_for_exception
+2025-11-15 11:54:56,746:     response = handle_uncaught_exception(
+2025-11-15 11:54:56,746:         request, get_resolver(get_urlconf()), sys.exc_info()
+2025-11-15 11:54:56,747:     )
+2025-11-15 11:54:56,747: 
+2025-11-15 11:54:56,747:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/handlers/exception.py", line 182, in handle_uncaught_exception
+2025-11-15 11:54:56,747:     return debug.technical_500_response(request, *exc_info)
+2025-11-15 11:54:56,747:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:56,747: 
+2025-11-15 11:54:56,747:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 69, in technical_500_response
+2025-11-15 11:54:56,747:     html = reporter.get_traceback_html()
+2025-11-15 11:54:56,747: 
+2025-11-15 11:54:56,747:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 428, in get_traceback_html
+2025-11-15 11:54:56,747:     c = Context(self.get_traceback_data(), use_l10n=False)
+2025-11-15 11:54:56,747:                 ~~~~~~~~~~~~~~~~~~~~~~~^^
+2025-11-15 11:54:56,747: 
+2025-11-15 11:54:56,747:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 411, in get_traceback_data
+2025-11-15 11:54:56,747:     c["raising_view_name"] = get_caller(self.request)
+2025-11-15 11:54:56,748:                              ~~~~~~~~~~^^^^^^^^^^^^^^
+2025-11-15 11:54:56,748: 
+2025-11-15 11:54:56,748:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/views/debug.py", line 102, in get_caller
+2025-11-15 11:54:56,748:     resolver_match = resolve(request.path)
+2025-11-15 11:54:56,748: 
+2025-11-15 11:54:56,748:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/base.py", line 25, in resolve
+2025-11-15 11:54:56,748:     return get_resolver(urlconf).resolve(path)
+2025-11-15 11:54:56,748:            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2025-11-15 11:54:56,748: 
+2025-11-15 11:54:56,748:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 666, in resolve
+2025-11-15 11:54:56,749:     for pattern in self.url_patterns:
+2025-11-15 11:54:56,749:                    ^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:56,749: 
+2025-11-15 11:54:56,749:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+2025-11-15 11:54:56,749:     res = instance.__dict__[self.name] = self.func(instance)
+2025-11-15 11:54:56,749:                                          ~~~~~~~~~^^^^^^^^^^
+2025-11-15 11:54:56,749: 
+2025-11-15 11:54:56,749:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 718, in url_patterns
+2025-11-15 11:54:56,750:     patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+2025-11-15 11:54:56,750:                        ^^^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:56,750: 
+2025-11-15 11:54:56,750:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/utils/functional.py", line 47, in __get__
+2025-11-15 11:54:56,750:     res = instance.__dict__[self.name] = self.func(instance)
+2025-11-15 11:54:56,750:                                          ~~~~~~~~~^^^^^^^^^^
+2025-11-15 11:54:56,750: 
+2025-11-15 11:54:56,750:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/resolvers.py", line 711, in urlconf_module
+2025-11-15 11:54:56,751:     return import_module(self.urlconf_name)
+2025-11-15 11:54:56,751: 
+2025-11-15 11:54:56,751:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/urls.py", line 25, in <module>
+2025-11-15 11:54:56,751:     path('api/' , include('my_store.urls')),
+2025-11-15 11:54:56,751:                   ~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-15 11:54:56,751: 
+2025-11-15 11:54:56,751:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/urls/conf.py", line 39, in include
+2025-11-15 11:54:56,752:     urlconf_module = import_module(urlconf_module)
+2025-11-15 11:54:56,752: 
+2025-11-15 11:54:56,752:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/my_store/urls.py", line 3, in <module>
+2025-11-15 11:54:56,752:     from .views import *
+2025-11-15 11:54:56,752: 
+2025-11-15 11:54:56,752:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/my_store/views.py", line 17, in <module>
+2025-11-15 11:54:56,752:     from firebase_admin import auth as firebase_auth
+2025-11-15 12:05:52,116: Not Found: /
+2025-11-15 12:05:57,166: Not Found: /
+2025-11-15 12:05:57,746: Not Found: /favicon.ico
+2025-11-16 11:37:25,467: Error running WSGI application
+2025-11-16 11:37:25,479: ModuleNotFoundError: No module named 'dotenv'
+2025-11-16 11:37:25,479:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 106, in <module>
+2025-11-16 11:37:25,479:     application = get_wsgi_application()
+2025-11-16 11:37:25,479: 
+2025-11-16 11:37:25,479:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:37:25,479:     django.setup(set_prefix=False)
+2025-11-16 11:37:25,480:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:37:25,480: 
+2025-11-16 11:37:25,480:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:37:25,480:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:37:25,480:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:37:25,480: 
+2025-11-16 11:37:25,480:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:37:25,480:     self._setup(name)
+2025-11-16 11:37:25,480:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:37:25,480: 
+2025-11-16 11:37:25,480:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:37:25,481:     self._wrapped = Settings(settings_module)
+2025-11-16 11:37:25,481:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:37:25,481: 
+2025-11-16 11:37:25,481:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:37:25,481:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:37:25,481: 
+2025-11-16 11:37:25,481:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 16, in <module>
+2025-11-16 11:37:25,481:     from dotenv import load_dotenv
+2025-11-16 11:37:25,481: ***************************************************
+2025-11-16 11:37:25,481: If you're seeing an import error and don't know why,
+2025-11-16 11:37:25,482: we have a dedicated help page to help you debug: 
+2025-11-16 11:37:25,482: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:37:25,482: ***************************************************
+2025-11-16 11:39:53,636: Error running WSGI application
+2025-11-16 11:39:53,650: json.decoder.JSONDecodeError: Invalid control character at: line 6 column 46 (char 171)
+2025-11-16 11:39:53,650:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 106, in <module>
+2025-11-16 11:39:53,650:     application = get_wsgi_application()
+2025-11-16 11:39:53,650: 
+2025-11-16 11:39:53,650:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:39:53,650:     django.setup(set_prefix=False)
+2025-11-16 11:39:53,650:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:39:53,651: 
+2025-11-16 11:39:53,651:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:39:53,651:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:39:53,651:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:39:53,651: 
+2025-11-16 11:39:53,651:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:39:53,651:     self._setup(name)
+2025-11-16 11:39:53,651:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:39:53,651: 
+2025-11-16 11:39:53,651:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:39:53,651:     self._wrapped = Settings(settings_module)
+2025-11-16 11:39:53,651:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:39:53,652: 
+2025-11-16 11:39:53,652:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:39:53,652:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:39:53,652: 
+2025-11-16 11:39:53,652:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:39:53,653:   File "/usr/local/lib/python3.13/json/decoder.py", line 345, in decode
+2025-11-16 11:39:53,653:     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+2025-11-16 11:39:53,653:                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:39:53,654: 
+2025-11-16 11:39:53,654:   File "/usr/local/lib/python3.13/json/decoder.py", line 361, in raw_decode
+2025-11-16 11:39:53,654:     obj, end = self.scan_once(s, idx)
+2025-11-16 11:39:53,654:                ~~~~~~~~~~~~~~^^^^^^^^
+2025-11-16 11:39:53,654: ***************************************************
+2025-11-16 11:39:53,654: If you're seeing an import error and don't know why,
+2025-11-16 11:39:53,654: we have a dedicated help page to help you debug: 
+2025-11-16 11:39:53,654: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:39:53,654: ***************************************************
+2025-11-16 11:39:59,382: Error running WSGI application
+2025-11-16 11:39:59,385: json.decoder.JSONDecodeError: Invalid control character at: line 6 column 46 (char 171)
+2025-11-16 11:39:59,385:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 106, in <module>
+2025-11-16 11:39:59,385:     application = get_wsgi_application()
+2025-11-16 11:39:59,385: 
+2025-11-16 11:39:59,385:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:39:59,385:     django.setup(set_prefix=False)
+2025-11-16 11:39:59,385:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:39:59,386: 
+2025-11-16 11:39:59,386:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:39:59,386:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:39:59,386:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:39:59,386: 
+2025-11-16 11:39:59,386:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:39:59,386:     self._setup(name)
+2025-11-16 11:39:59,386:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:39:59,387: 
+2025-11-16 11:39:59,387:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:39:59,387:     self._wrapped = Settings(settings_module)
+2025-11-16 11:39:59,387:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:39:59,387: 
+2025-11-16 11:39:59,387:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:39:59,388:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:39:59,388: 
+2025-11-16 11:39:59,388:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:39:59,388:     from .firebase_config import *
+2025-11-16 11:39:59,388: 
+2025-11-16 11:39:59,388:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 13, in <module>
+2025-11-16 11:39:59,388:     firebase_key = json.loads(firebase_key_json)
+2025-11-16 11:39:59,388: 
+2025-11-16 11:39:59,388:   File "/usr/local/lib/python3.13/json/__init__.py", line 346, in loads
+2025-11-16 11:39:59,388:     return _default_decoder.decode(s)
+2025-11-16 11:39:59,389:   File "/usr/local/lib/python3.13/json/decoder.py", line 361, in raw_decode
+2025-11-16 11:39:59,389:     obj, end = self.scan_once(s, idx)
+2025-11-16 11:39:59,389:                ~~~~~~~~~~~~~~^^^^^^^^
+2025-11-16 11:39:59,389: ***************************************************
+2025-11-16 11:39:59,389: If you're seeing an import error and don't know why,
+2025-11-16 11:39:59,390: we have a dedicated help page to help you debug: 
+2025-11-16 11:39:59,390: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:39:59,390: ***************************************************
+2025-11-16 11:40:01,833: Error running WSGI application
+2025-11-16 11:40:01,839: json.decoder.JSONDecodeError: Invalid control character at: line 6 column 46 (char 171)
+2025-11-16 11:40:01,839:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 106, in <module>
+2025-11-16 11:40:01,839:     application = get_wsgi_application()
+2025-11-16 11:40:01,839: 
+2025-11-16 11:40:01,839:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:40:01,840:     django.setup(set_prefix=False)
+2025-11-16 11:40:01,840:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:40:01,840: 
+2025-11-16 11:40:01,840:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:40:01,840:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:40:01,840:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:40:01,840: 
+2025-11-16 11:40:01,840:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:40:01,840:     self._setup(name)
+2025-11-16 11:40:01,841:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:40:01,841: 
+2025-11-16 11:40:01,841:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:40:01,841:     self._wrapped = Settings(settings_module)
+2025-11-16 11:40:01,841:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:40:01,841: 
+2025-11-16 11:40:01,842:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:40:01,842:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:40:01,842: 
+2025-11-16 11:40:01,842:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:40:01,842:     from .firebase_config import *
+2025-11-16 11:40:01,842: 
+2025-11-16 11:40:01,843:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 13, in <module>
+2025-11-16 11:40:01,843:     firebase_key = json.loads(firebase_key_json)
+2025-11-16 11:40:01,843: 
+2025-11-16 11:40:01,843:   File "/usr/local/lib/python3.13/json/__init__.py", line 346, in loads
+2025-11-16 11:40:01,843:     return _default_decoder.decode(s)
+2025-11-16 11:40:01,843:            ~~~~~~~~~~~~~~~~~~~~~~~^^^
+2025-11-16 11:40:01,844: 
+2025-11-16 11:40:01,845: ***************************************************
+2025-11-16 11:40:01,845: If you're seeing an import error and don't know why,
+2025-11-16 11:40:01,845: we have a dedicated help page to help you debug: 
+2025-11-16 11:40:01,846: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:40:01,846: ***************************************************
+2025-11-16 11:43:03,992: Error running WSGI application
+2025-11-16 11:43:04,002: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:43:04,002:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:43:04,002:     application = get_wsgi_application()
+2025-11-16 11:43:04,002: 
+2025-11-16 11:43:04,002:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:43:04,003:     django.setup(set_prefix=False)
+2025-11-16 11:43:04,003:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:43:04,003: 
+2025-11-16 11:43:04,003:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:43:04,003:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:43:04,003:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:43:04,004: 
+2025-11-16 11:43:04,004:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:43:04,004:     self._setup(name)
+2025-11-16 11:43:04,004:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:43:04,004: 
+2025-11-16 11:43:04,005:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:43:04,005: 
+2025-11-16 11:43:04,005:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:43:04,005:     from .firebase_config import *
+2025-11-16 11:43:04,006: 
+2025-11-16 11:43:04,006:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:43:04,006:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:43:04,006: ***************************************************
+2025-11-16 11:43:04,006: If you're seeing an import error and don't know why,
+2025-11-16 11:43:04,006: we have a dedicated help page to help you debug: 
+2025-11-16 11:43:04,007: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:43:04,007: ***************************************************
+2025-11-16 11:43:28,897: Error running WSGI application
+2025-11-16 11:43:28,899: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:43:28,899:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:43:28,899:     application = get_wsgi_application()
+2025-11-16 11:43:28,899: 
+2025-11-16 11:43:28,899:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:43:28,899:     django.setup(set_prefix=False)
+2025-11-16 11:43:28,900:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:43:28,900: 
+2025-11-16 11:43:28,900:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:43:28,900:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:43:28,900:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:43:28,900: 
+2025-11-16 11:43:28,900:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:43:28,900:     self._setup(name)
+2025-11-16 11:43:28,900:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:43:28,900: 
+2025-11-16 11:43:28,900:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:43:28,900:     self._wrapped = Settings(settings_module)
+2025-11-16 11:43:28,901:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:43:28,901: 
+2025-11-16 11:43:28,901:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:43:28,901:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:43:28,901: 
+2025-11-16 11:43:28,901: 
+2025-11-16 11:43:28,901:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:43:28,901:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:43:28,901: ***************************************************
+2025-11-16 11:43:28,901: If you're seeing an import error and don't know why,
+2025-11-16 11:43:28,902: we have a dedicated help page to help you debug: 
+2025-11-16 11:43:28,902: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:43:28,902: ***************************************************
+2025-11-16 11:43:30,371: Error running WSGI application
+2025-11-16 11:43:30,374: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:43:30,374:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:43:30,374:     application = get_wsgi_application()
+2025-11-16 11:43:30,374: 
+2025-11-16 11:43:30,374:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:43:30,374:     django.setup(set_prefix=False)
+2025-11-16 11:43:30,374:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:43:30,374: 
+2025-11-16 11:43:30,374:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:43:30,375:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:43:30,375:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:43:30,375: 
+2025-11-16 11:43:30,375:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:43:30,375:     self._setup(name)
+2025-11-16 11:43:30,377: ***************************************************
+2025-11-16 11:45:03,183: Error running WSGI application
+2025-11-16 11:45:03,194: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:45:03,194:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:45:03,194:     application = get_wsgi_application()
+2025-11-16 11:45:03,194: 
+2025-11-16 11:45:03,194:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:45:03,195:     django.setup(set_prefix=False)
+2025-11-16 11:45:03,195:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:03,195: 
+2025-11-16 11:45:03,195:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:45:03,195:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:45:03,195:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:03,196: 
+2025-11-16 11:45:03,196:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:45:03,196:     self._setup(name)
+2025-11-16 11:45:03,196:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:45:03,196: 
+2025-11-16 11:45:03,196:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:45:03,197:     self._wrapped = Settings(settings_module)
+2025-11-16 11:45:03,197:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:03,197: 
+2025-11-16 11:45:03,197:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:45:03,197:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:45:03,198: 
+2025-11-16 11:45:03,198:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:45:03,198:     from .firebase_config import *
+2025-11-16 11:45:03,198: 
+2025-11-16 11:45:03,198:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:45:03,198:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:45:03,199: ***************************************************
+2025-11-16 11:45:03,199: If you're seeing an import error and don't know why,
+2025-11-16 11:45:03,199: we have a dedicated help page to help you debug: 
+2025-11-16 11:45:03,199: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:45:03,199: ***************************************************
+2025-11-16 11:45:06,606: Error running WSGI application
+2025-11-16 11:45:06,608: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:45:06,608:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:45:06,608:     application = get_wsgi_application()
+2025-11-16 11:45:06,609: 
+2025-11-16 11:45:06,609:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:45:06,609:     django.setup(set_prefix=False)
+2025-11-16 11:45:06,609:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:06,609: 
+2025-11-16 11:45:06,609:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:45:06,609:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:45:06,609:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:06,609: 
+2025-11-16 11:45:06,609:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:45:06,609:     self._setup(name)
+2025-11-16 11:45:06,610:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:45:06,610: 
+2025-11-16 11:45:06,610:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:45:06,610:     self._wrapped = Settings(settings_module)
+2025-11-16 11:45:06,610:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:06,610: 
+2025-11-16 11:45:06,610:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:45:06,610:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:45:06,610: 
+2025-11-16 11:45:06,610:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:45:06,610:     from .firebase_config import *
+2025-11-16 11:45:06,611: 
+2025-11-16 11:45:06,611:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:45:06,611:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:45:06,611: ***************************************************
+2025-11-16 11:45:06,611: If you're seeing an import error and don't know why,
+2025-11-16 11:45:06,611: we have a dedicated help page to help you debug: 
+2025-11-16 11:45:06,611: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:45:06,611: ***************************************************
+2025-11-16 11:45:08,835: Error running WSGI application
+2025-11-16 11:45:08,837: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:45:08,837:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:45:08,837:     application = get_wsgi_application()
+2025-11-16 11:45:08,837: 
+2025-11-16 11:45:08,837:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:45:08,838:     django.setup(set_prefix=False)
+2025-11-16 11:45:08,838:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:08,838: 
+2025-11-16 11:45:08,838:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:45:08,838:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:45:08,838:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:08,838: 
+2025-11-16 11:45:08,838:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:45:08,838:     self._setup(name)
+2025-11-16 11:45:08,839:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:45:08,839: 
+2025-11-16 11:45:08,839:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:45:08,839:     self._wrapped = Settings(settings_module)
+2025-11-16 11:45:08,839:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:45:08,839: 
+2025-11-16 11:45:08,839:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:45:08,839:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:45:08,839: 
+2025-11-16 11:45:08,839:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:45:08,839:     from .firebase_config import *
+2025-11-16 11:45:08,840: 
+2025-11-16 11:45:08,840:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:46:04,107: Error running WSGI application
+2025-11-16 11:46:04,123: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:46:04,124:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:46:04,124:     application = get_wsgi_application()
+2025-11-16 11:46:04,124: 
+2025-11-16 11:46:04,124:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:46:04,124:     django.setup(set_prefix=False)
+2025-11-16 11:46:04,124:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:46:04,124: 
+2025-11-16 11:46:04,125:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:46:04,125:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:46:04,125:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:46:04,125: 
+2025-11-16 11:46:04,125:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:46:04,126:     self._setup(name)
+2025-11-16 11:46:04,126:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:46:04,126: 
+2025-11-16 11:46:04,126:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:46:04,127:     self._wrapped = Settings(settings_module)
+2025-11-16 11:46:04,127:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:46:04,127: 
+2025-11-16 11:46:04,127:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:46:04,127:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:46:04,127: 
+2025-11-16 11:46:04,127:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:46:04,128:     from .firebase_config import *
+2025-11-16 11:46:04,128: 
+2025-11-16 11:46:04,128:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:46:04,128:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:46:04,128: ***************************************************
+2025-11-16 11:46:04,128: If you're seeing an import error and don't know why,
+2025-11-16 11:46:04,128: we have a dedicated help page to help you debug: 
+2025-11-16 11:46:04,129: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,384: Error running WSGI application
+2025-11-16 11:53:24,393: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,393:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,393:     application = get_wsgi_application()
+2025-11-16 11:53:24,393: 
+2025-11-16 11:53:24,394:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,394:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,394:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,394: 
+2025-11-16 11:53:24,394:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,394:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,394:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,394: 
+2025-11-16 11:53:24,395:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,395:     self._setup(name)
+2025-11-16 11:53:24,395:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,395: 
+2025-11-16 11:53:24,395:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,395:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,395:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,395: 
+2025-11-16 11:53:24,395:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,395:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,395: 
+2025-11-16 11:53:24,396:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,396:     from .firebase_config import *
+2025-11-16 11:53:24,396: 
+2025-11-16 11:53:24,396:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,396:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,396: ***************************************************
+2025-11-16 11:53:24,446: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,446:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,446:     application = get_wsgi_application()
+2025-11-16 11:53:24,446: 
+2025-11-16 11:53:24,446:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,447:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,447:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,447: 
+2025-11-16 11:53:24,447:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,447:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,447:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,447: 
+2025-11-16 11:53:24,447:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,447:     self._setup(name)
+2025-11-16 11:53:24,447:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,447: 
+2025-11-16 11:53:24,447:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,447:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,448:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,448: 
+2025-11-16 11:53:24,448:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,448:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,448: 
+2025-11-16 11:53:24,448:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,448:     from .firebase_config import *
+2025-11-16 11:53:24,448: 
+2025-11-16 11:53:24,449: Error running WSGI application
+2025-11-16 11:53:24,451: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,451:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,451:     application = get_wsgi_application()
+2025-11-16 11:53:24,451: 
+2025-11-16 11:53:24,451:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,451:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,451:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,451: 
+2025-11-16 11:53:24,451:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,451:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,452:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,452: 
+2025-11-16 11:53:24,452:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,452:     self._setup(name)
+2025-11-16 11:53:24,452:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,452: 
+2025-11-16 11:53:24,452:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,452:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,452:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,452: 
+2025-11-16 11:53:24,452:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,452:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,452: 
+2025-11-16 11:53:24,452:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,453:     from .firebase_config import *
+2025-11-16 11:53:24,453: 
+2025-11-16 11:53:24,453:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,453:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,453: ***************************************************
+2025-11-16 11:53:24,453: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,453: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,453: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,453: ***************************************************
+2025-11-16 11:53:24,453: Error running WSGI application
+2025-11-16 11:53:24,455: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,455:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,455:     application = get_wsgi_application()
+2025-11-16 11:53:24,455: 
+2025-11-16 11:53:24,455:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,455:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,455:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,456: 
+2025-11-16 11:53:24,456:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,456:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,456:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,456: 
+2025-11-16 11:53:24,456:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,456:     self._setup(name)
+2025-11-16 11:53:24,456:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,456: 
+2025-11-16 11:53:24,456:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,456:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,456:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,456: 
+2025-11-16 11:53:24,457:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,457:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,457: 
+2025-11-16 11:53:24,457:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,457:     from .firebase_config import *
+2025-11-16 11:53:24,457: 
+2025-11-16 11:53:24,457:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,457:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,457: ***************************************************
+2025-11-16 11:53:24,457: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,457: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,457: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,457: ***************************************************
+2025-11-16 11:53:24,458: Error running WSGI application
+2025-11-16 11:53:24,459: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,459:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,459:     application = get_wsgi_application()
+2025-11-16 11:53:24,460: 
+2025-11-16 11:53:24,460:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,460:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,460:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,460: 
+2025-11-16 11:53:24,460:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,460:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,460:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,460: 
+2025-11-16 11:53:24,460:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,460:     self._setup(name)
+2025-11-16 11:53:24,460:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,460: 
+2025-11-16 11:53:24,461:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,461:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,461:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,461: 
+2025-11-16 11:53:24,461:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,461:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,461: 
+2025-11-16 11:53:24,461:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,461:     from .firebase_config import *
+2025-11-16 11:53:24,461: 
+2025-11-16 11:53:24,461:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,461:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,462: ***************************************************
+2025-11-16 11:53:24,462: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,462: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,462: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,462: ***************************************************
+2025-11-16 11:53:24,462: Error running WSGI application
+2025-11-16 11:53:24,463: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,463:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,464:     application = get_wsgi_application()
+2025-11-16 11:53:24,464: 
+2025-11-16 11:53:24,464:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,464:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,464:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,464: 
+2025-11-16 11:53:24,464:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,464:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,464:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,464: 
+2025-11-16 11:53:24,464:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,464:     self._setup(name)
+2025-11-16 11:53:24,465:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,465: 
+2025-11-16 11:53:24,465:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,465:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,465:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,465: 
+2025-11-16 11:53:24,465:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,465:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,465: 
+2025-11-16 11:53:24,465:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,465:     from .firebase_config import *
+2025-11-16 11:53:24,465: 
+2025-11-16 11:53:24,466:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,466:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,466: ***************************************************
+2025-11-16 11:53:24,466: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,466: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,466: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,466: ***************************************************
+2025-11-16 11:53:24,658: Error running WSGI application
+2025-11-16 11:53:24,659: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,660:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,660:     application = get_wsgi_application()
+2025-11-16 11:53:24,660: 
+2025-11-16 11:53:24,660:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,660:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,660:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,660: 
+2025-11-16 11:53:24,660:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,660:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,661:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,661: 
+2025-11-16 11:53:24,661:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,661:     self._setup(name)
+2025-11-16 11:53:24,661:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,661: 
+2025-11-16 11:53:24,661:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,661:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,661:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,661: 
+2025-11-16 11:53:24,661:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,662:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,662: 
+2025-11-16 11:53:24,662:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,662:     from .firebase_config import *
+2025-11-16 11:53:24,662: 
+2025-11-16 11:53:24,662:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,662:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,662: ***************************************************
+2025-11-16 11:53:24,662: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,662: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,662: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,663: ***************************************************
+2025-11-16 11:53:24,706: Error running WSGI application
+2025-11-16 11:53:24,707: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,708:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,708:     application = get_wsgi_application()
+2025-11-16 11:53:24,708: 
+2025-11-16 11:53:24,708:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,708:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,708:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,708: 
+2025-11-16 11:53:24,708:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,708:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,708:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,709:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,709:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,709:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,709: 
+2025-11-16 11:53:24,709:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,709:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,710: 
+2025-11-16 11:53:24,710:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,710:     from .firebase_config import *
+2025-11-16 11:53:24,710: 
+2025-11-16 11:53:24,710:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,710:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,710: ***************************************************
+2025-11-16 11:53:24,710: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,710: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,710: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,710: ***************************************************
+2025-11-16 11:53:24,725: Error running WSGI application
+2025-11-16 11:53:24,727: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,728:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,728:     application = get_wsgi_application()
+2025-11-16 11:53:24,728: 
+2025-11-16 11:53:24,728:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,728:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,728:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,729: 
+2025-11-16 11:53:24,729:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,729:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,729:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,729: 
+2025-11-16 11:53:24,729:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,730:     self._setup(name)
+2025-11-16 11:53:24,730:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,730: 
+2025-11-16 11:53:24,730:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,730:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,730:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,733: Error running WSGI application
+2025-11-16 11:53:24,735: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,736:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,736:     application = get_wsgi_application()
+2025-11-16 11:53:24,736: 
+2025-11-16 11:53:24,736:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,736:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,736:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,737: 
+2025-11-16 11:53:24,737:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,737:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,737:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,737: 
+2025-11-16 11:53:24,737:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,737:     self._setup(name)
+2025-11-16 11:53:24,738:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,738: 
+2025-11-16 11:53:24,738:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,738:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,738:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,738: 
+2025-11-16 11:53:24,739:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,739:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,739: 
+2025-11-16 11:53:24,739:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,739:     from .firebase_config import *
+2025-11-16 11:53:24,739: 
+2025-11-16 11:53:24,740:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,740:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,743: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,743:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,743:     application = get_wsgi_application()
+2025-11-16 11:53:24,744: 
+2025-11-16 11:53:24,744:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,744:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,744:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,744: 
+2025-11-16 11:53:24,744:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,745:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,745:     self._setup(name)
+2025-11-16 11:53:24,745:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,746: 
+2025-11-16 11:53:24,746:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,746:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,746:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,746: 
+2025-11-16 11:53:24,746:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,746:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,747: 
+2025-11-16 11:53:24,747:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,747:     from .firebase_config import *
+2025-11-16 11:53:24,747: 
+2025-11-16 11:53:24,747:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,747:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,748: ***************************************************
+2025-11-16 11:53:24,748: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,748: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,748: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,748: ***************************************************
+2025-11-16 11:53:24,748: Error running WSGI application
+2025-11-16 11:53:24,753:     self._setup(name)
+2025-11-16 11:53:24,753:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,753: 
+2025-11-16 11:53:24,753:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,754:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,754:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,754: 
+2025-11-16 11:53:24,754:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,754:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,754: 
+2025-11-16 11:53:24,755:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,755:     from .firebase_config import *
+2025-11-16 11:53:24,755: 
+2025-11-16 11:53:24,755:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,755:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,980: Error running WSGI application
+2025-11-16 11:53:24,983: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 11:53:24,983:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 11:53:24,983:     application = get_wsgi_application()
+2025-11-16 11:53:24,984: 
+2025-11-16 11:53:24,984:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 11:53:24,984:     django.setup(set_prefix=False)
+2025-11-16 11:53:24,984:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,984: 
+2025-11-16 11:53:24,985:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 11:53:24,985:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 11:53:24,985:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,985: 
+2025-11-16 11:53:24,985:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 11:53:24,985:     self._setup(name)
+2025-11-16 11:53:24,986:     ~~~~~~~~~~~^^^^^^
+2025-11-16 11:53:24,986: 
+2025-11-16 11:53:24,986:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 11:53:24,986:     self._wrapped = Settings(settings_module)
+2025-11-16 11:53:24,986:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 11:53:24,986: 
+2025-11-16 11:53:24,987:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 11:53:24,987:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 11:53:24,987: 
+2025-11-16 11:53:24,987:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 11:53:24,987:     from .firebase_config import *
+2025-11-16 11:53:24,987: 
+2025-11-16 11:53:24,988:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 11:53:24,988:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 11:53:24,988: ***************************************************
+2025-11-16 11:53:24,988: If you're seeing an import error and don't know why,
+2025-11-16 11:53:24,988: we have a dedicated help page to help you debug: 
+2025-11-16 11:53:24,988: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 11:53:24,989: ***************************************************
+2025-11-16 12:00:26,356: Error running WSGI application
+2025-11-16 12:00:26,365: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:00:26,365:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:00:26,366:     application = get_wsgi_application()
+2025-11-16 12:00:26,366: 
+2025-11-16 12:00:26,366:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:00:26,366:     django.setup(set_prefix=False)
+2025-11-16 12:00:26,366:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:00:26,366: 
+2025-11-16 12:00:26,366:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:00:26,367:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:00:26,367:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:00:26,367: 
+2025-11-16 12:00:26,367:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:00:26,367:     self._setup(name)
+2025-11-16 12:00:26,367:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:00:26,367: 
+2025-11-16 12:00:26,367:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:00:26,367:     self._wrapped = Settings(settings_module)
+2025-11-16 12:00:26,367:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:00:26,367: 
+2025-11-16 12:00:26,367:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:00:26,368:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:00:26,368: 
+2025-11-16 12:00:26,368:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:00:26,368:     from .firebase_config import *
+2025-11-16 12:00:26,368: 
+2025-11-16 12:00:26,368:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:00:26,368:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:00:26,368: ***************************************************
+2025-11-16 12:00:26,368: If you're seeing an import error and don't know why,
+2025-11-16 12:00:26,368: we have a dedicated help page to help you debug: 
+2025-11-16 12:00:26,368: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:00:26,369: ***************************************************
+2025-11-16 12:00:42,599: Error running WSGI application
+2025-11-16 12:00:42,602: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:00:42,602:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:00:42,602:     application = get_wsgi_application()
+2025-11-16 12:00:42,602: 
+2025-11-16 12:00:42,602:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:00:42,603:     django.setup(set_prefix=False)
+2025-11-16 12:00:42,603:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:00:42,603: 
+2025-11-16 12:00:42,603:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:00:42,603:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:00:42,603:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:00:42,605:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:00:42,605:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:00:42,605: 
+2025-11-16 12:00:42,605:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:00:42,605:     from .firebase_config import *
+2025-11-16 12:00:42,606: 
+2025-11-16 12:00:42,606:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:00:42,606:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:00:42,606: ***************************************************
+2025-11-16 12:00:42,606: If you're seeing an import error and don't know why,
+2025-11-16 12:00:42,606: we have a dedicated help page to help you debug: 
+2025-11-16 12:00:42,607: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:00:42,607: ***************************************************
+2025-11-16 12:01:06,792: Error running WSGI application
+2025-11-16 12:01:06,795: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:01:06,795:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:01:06,795:     application = get_wsgi_application()
+2025-11-16 12:01:06,795: 
+2025-11-16 12:01:06,796:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:01:06,796:     django.setup(set_prefix=False)
+2025-11-16 12:01:06,796:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:01:06,796: 
+2025-11-16 12:01:06,796:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:01:06,796:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:01:06,797:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:01:06,797: 
+2025-11-16 12:01:06,797:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:01:06,797:     self._setup(name)
+2025-11-16 12:01:06,797:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:01:06,797: 
+2025-11-16 12:01:06,797:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:01:06,797:     self._wrapped = Settings(settings_module)
+2025-11-16 12:01:06,797:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:01:06,797: 
+2025-11-16 12:01:06,797:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:01:06,797:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:01:06,798: 
+2025-11-16 12:01:06,798:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:01:06,798:     from .firebase_config import *
+2025-11-16 12:01:06,798: 
+2025-11-16 12:01:06,798:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:01:06,798:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:01:06,798: ***************************************************
+2025-11-16 12:01:06,798: If you're seeing an import error and don't know why,
+2025-11-16 12:01:06,798: we have a dedicated help page to help you debug: 
+2025-11-16 12:01:06,798: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:01:06,798: ***************************************************
+2025-11-16 12:01:53,142: Error running WSGI application
+2025-11-16 12:03:08,640: Error running WSGI application
+2025-11-16 12:03:08,649: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:03:08,649:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:03:08,649:     application = get_wsgi_application()
+2025-11-16 12:03:08,649: 
+2025-11-16 12:03:08,649:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:03:08,650:     django.setup(set_prefix=False)
+2025-11-16 12:03:08,650:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:08,650: 
+2025-11-16 12:03:08,650:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:03:08,650:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:03:08,650:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:08,651: 
+2025-11-16 12:03:08,651:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:03:08,651:     self._setup(name)
+2025-11-16 12:03:08,651:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:03:08,651: 
+2025-11-16 12:03:08,651:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:03:08,652:     self._wrapped = Settings(settings_module)
+2025-11-16 12:03:08,652:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:08,652: 
+2025-11-16 12:03:08,652:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:03:08,652:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:03:08,652: 
+2025-11-16 12:03:08,653: 
+2025-11-16 12:03:08,653:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:03:08,653:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:03:08,653: ***************************************************
+2025-11-16 12:03:08,654: If you're seeing an import error and don't know why,
+2025-11-16 12:03:08,654: we have a dedicated help page to help you debug: 
+2025-11-16 12:03:08,654: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:03:08,654: ***************************************************
+2025-11-16 12:03:37,111: Error running WSGI application
+2025-11-16 12:03:37,114: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:03:37,115:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:03:37,115:     application = get_wsgi_application()
+2025-11-16 12:03:37,115: 
+2025-11-16 12:03:37,115:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:03:37,115:     django.setup(set_prefix=False)
+2025-11-16 12:03:37,116:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:37,116: 
+2025-11-16 12:03:37,116:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:03:37,117:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:03:37,117:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:37,117: 
+2025-11-16 12:03:37,117:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:03:37,118:     self._setup(name)
+2025-11-16 12:03:37,119:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:03:37,119: 
+2025-11-16 12:03:37,120:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:03:37,120:     self._wrapped = Settings(settings_module)
+2025-11-16 12:03:37,121:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:37,122: 
+2025-11-16 12:03:37,122:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:03:37,122:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:03:37,122: 
+2025-11-16 12:03:37,122:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:03:37,123:     from .firebase_config import *
+2025-11-16 12:03:37,123: 
+2025-11-16 12:03:37,123:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:03:37,123:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:03:37,123: ***************************************************
+2025-11-16 12:03:37,124: If you're seeing an import error and don't know why,
+2025-11-16 12:03:37,124: we have a dedicated help page to help you debug: 
+2025-11-16 12:03:37,124: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:03:37,124: ***************************************************
+2025-11-16 12:03:51,221: Error running WSGI application
+2025-11-16 12:03:51,224: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:03:51,224:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:03:51,224:     application = get_wsgi_application()
+2025-11-16 12:03:51,224: 
+2025-11-16 12:03:51,224:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:03:51,224:     django.setup(set_prefix=False)
+2025-11-16 12:03:51,225:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:51,225: 
+2025-11-16 12:03:51,225:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:03:51,225:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:03:51,225:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:51,225: 
+2025-11-16 12:03:51,225:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:03:51,225:     self._setup(name)
+2025-11-16 12:03:51,225:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:03:51,226: 
+2025-11-16 12:03:51,226:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:03:51,226:     self._wrapped = Settings(settings_module)
+2025-11-16 12:03:51,226:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:03:51,226: 
+2025-11-16 12:03:51,226:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:03:51,227:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:03:51,227: 
+2025-11-16 12:03:51,227:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:03:51,227:     from .firebase_config import *
+2025-11-16 12:03:51,227: 
+2025-11-16 12:03:51,227:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:03:51,228:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:03:51,228: ***************************************************
+2025-11-16 12:03:51,228: If you're seeing an import error and don't know why,
+2025-11-16 12:03:51,228: we have a dedicated help page to help you debug: 
+2025-11-16 12:04:54,486: Error running WSGI application
+2025-11-16 12:04:54,496: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:04:54,497:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:04:54,497:     application = get_wsgi_application()
+2025-11-16 12:04:54,497: 
+2025-11-16 12:04:54,497:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:04:54,497:     django.setup(set_prefix=False)
+2025-11-16 12:04:54,498:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:04:54,498: 
+2025-11-16 12:04:54,498:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:04:54,498:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:04:54,498:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:04:54,501: 
+2025-11-16 12:04:54,501:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:04:54,501:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:04:54,502: ***************************************************
+2025-11-16 12:04:54,502: If you're seeing an import error and don't know why,
+2025-11-16 12:04:54,502: we have a dedicated help page to help you debug: 
+2025-11-16 12:04:54,502: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:04:54,502: ***************************************************
+2025-11-16 12:05:00,793: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:05:00,793:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:05:00,793:     application = get_wsgi_application()
+2025-11-16 12:05:00,794: 
+2025-11-16 12:05:00,794:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:05:00,794:     django.setup(set_prefix=False)
+2025-11-16 12:05:00,794:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:05:00,794: 
+2025-11-16 12:05:00,794:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:05:00,794:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:05:00,794:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:05:00,794: 
+2025-11-16 12:14:47,088: Error running WSGI application
+2025-11-16 12:14:47,091: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:14:47,092:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:14:47,092:     application = get_wsgi_application()
+2025-11-16 12:14:47,092: 
+2025-11-16 12:14:47,092:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:14:47,092:     django.setup(set_prefix=False)
+2025-11-16 12:14:47,092:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:14:47,092: 
+2025-11-16 12:14:47,092:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:14:47,093:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:14:47,093:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:14:47,093: 
+2025-11-16 12:14:47,093:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:14:47,093:     self._setup(name)
+2025-11-16 12:14:47,093:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:14:47,093: 
+2025-11-16 12:14:47,093:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:14:47,093:     self._wrapped = Settings(settings_module)
+2025-11-16 12:14:47,094:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:14:47,094: 
+2025-11-16 12:14:47,094:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:14:47,094:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:14:47,094: 
+2025-11-16 12:14:47,094:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:14:47,094:     from .firebase_config import *
+2025-11-16 12:14:47,094: 
+2025-11-16 12:14:47,094:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:14:47,095:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:14:47,095: ***************************************************
+2025-11-16 12:14:47,095: If you're seeing an import error and don't know why,
+2025-11-16 12:14:47,095: we have a dedicated help page to help you debug: 
+2025-11-16 12:17:13,925: Error running WSGI application
+2025-11-16 12:17:13,931: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:17:13,932:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:17:13,932:     application = get_wsgi_application()
+2025-11-16 12:17:13,932: 
+2025-11-16 12:17:13,932:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:17:13,932:     django.setup(set_prefix=False)
+2025-11-16 12:17:13,932:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:17:13,932: 
+2025-11-16 12:17:13,932:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:17:13,932:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:17:13,932:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:17:13,932: 
+2025-11-16 12:17:13,933:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:17:13,933:     self._setup(name)
+2025-11-16 12:17:13,933:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:17:13,933: 
+2025-11-16 12:17:13,933:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:17:13,933:     self._wrapped = Settings(settings_module)
+2025-11-16 12:17:13,933:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:17:13,933: 
+2025-11-16 12:17:13,933:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:17:13,933:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:17:13,933: 
+2025-11-16 12:17:13,934:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:18:34,317: Error running WSGI application
+2025-11-16 12:18:34,319: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:18:34,319:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:18:34,319:     application = get_wsgi_application()
+2025-11-16 12:18:34,319: 
+2025-11-16 12:18:34,319:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:18:34,320:     django.setup(set_prefix=False)
+2025-11-16 12:18:34,320:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:18:34,320: 
+2025-11-16 12:18:34,320:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:18:34,320:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:18:34,320:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:18:34,320: 
+2025-11-16 12:18:34,320:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:18:34,320:     self._setup(name)
+2025-11-16 12:18:34,320:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:18:34,321: 
+2025-11-16 12:18:34,321:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:18:34,321:     self._wrapped = Settings(settings_module)
+2025-11-16 12:18:34,321:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:18:34,321: 
+2025-11-16 12:18:34,321:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:18:34,321:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:18:34,321: 
+2025-11-16 12:18:34,321:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:18:34,321:     from .firebase_config import *
+2025-11-16 12:18:34,321: 
+2025-11-16 12:18:34,321:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:18:34,322:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:18:34,322: ***************************************************
+2025-11-16 12:18:34,322: If you're seeing an import error and don't know why,
+2025-11-16 12:18:34,322: we have a dedicated help page to help you debug: 
+2025-11-16 12:18:34,322: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:18:34,322: ***************************************************
+2025-11-16 12:18:35,540: Error running WSGI application
+2025-11-16 12:18:35,543: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:18:35,543:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:18:35,543:     application = get_wsgi_application()
+2025-11-16 12:18:35,544: 
+2025-11-16 12:18:35,544:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:18:35,544:     django.setup(set_prefix=False)
+2025-11-16 12:18:35,544:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:18:35,544: 
+2025-11-16 12:18:35,547: 
+2025-11-16 12:18:35,548:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:18:35,548:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:18:35,548: ***************************************************
+2025-11-16 12:18:35,548: If you're seeing an import error and don't know why,
+2025-11-16 12:18:35,548: we have a dedicated help page to help you debug: 
+2025-11-16 12:18:35,548: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:18:35,549: ***************************************************
+2025-11-16 12:18:49,467: Error running WSGI application
+2025-11-16 12:18:49,469: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:18:49,469:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:18:49,469:     application = get_wsgi_application()
+2025-11-16 12:18:49,469: 
+2025-11-16 12:18:49,469:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:18:49,469:     django.setup(set_prefix=False)
+2025-11-16 12:18:49,469:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:18:49,469: 
+2025-11-16 12:18:49,469:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:18:49,469:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:18:49,470:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:18:49,470: 
+2025-11-16 12:18:49,470:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:18:49,470:     self._setup(name)
+2025-11-16 12:18:49,470:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:18:49,470: 
+2025-11-16 12:18:49,470:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:18:49,470:     self._wrapped = Settings(settings_module)
+2025-11-16 12:18:49,470:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:18:49,470: 
+2025-11-16 12:18:49,470:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:18:49,471:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:18:49,471: 
+2025-11-16 12:18:49,471:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:18:49,471:     from .firebase_config import *
+2025-11-16 12:18:49,471: 
+2025-11-16 12:18:49,471:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:18:49,471:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:18:49,471: ***************************************************
+2025-11-16 12:18:49,471: If you're seeing an import error and don't know why,
+2025-11-16 12:18:49,471: we have a dedicated help page to help you debug: 
+2025-11-16 12:18:49,472: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:18:49,472: ***************************************************
+2025-11-16 12:21:31,765: json.decoder.JSONDecodeError: Invalid control character at: line 5 column 46 (char 170)
+2025-11-16 12:21:31,765:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 102, in <module>
+2025-11-16 12:21:31,765:     application = get_wsgi_application()
+2025-11-16 12:21:31,766: 
+2025-11-16 12:21:31,766:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:21:31,766:     django.setup(set_prefix=False)
+2025-11-16 12:21:31,766:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:31,766: 
+2025-11-16 12:21:31,766:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:21:31,766:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:21:31,767:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:31,767: 
+2025-11-16 12:21:31,767:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:21:31,767:     self._setup(name)
+2025-11-16 12:21:31,767:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:21:31,767: 
+2025-11-16 12:21:31,767:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:21:31,767:     self._wrapped = Settings(settings_module)
+2025-11-16 12:21:31,768:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:31,768: 
+2025-11-16 12:21:31,768:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:21:31,768:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:21:31,768: 
+2025-11-16 12:21:31,768:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:21:31,768:     from .firebase_config import *
+2025-11-16 12:21:31,768: 
+2025-11-16 12:21:31,768:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 13, in <module>
+2025-11-16 12:21:31,769:     firebase_key = json.loads(firebase_key_json)
+2025-11-16 12:21:31,769: 
+2025-11-16 12:21:31,769:   File "/usr/local/lib/python3.13/json/__init__.py", line 346, in loads
+2025-11-16 12:21:31,769:     return _default_decoder.decode(s)
+2025-11-16 12:21:31,769:            ~~~~~~~~~~~~~~~~~~~~~~~^^^
+2025-11-16 12:21:31,769: 
+2025-11-16 12:21:31,769:   File "/usr/local/lib/python3.13/json/decoder.py", line 345, in decode
+2025-11-16 12:21:31,769:     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+2025-11-16 12:21:31,769:                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:31,770: 
+2025-11-16 12:21:31,770:   File "/usr/local/lib/python3.13/json/decoder.py", line 361, in raw_decode
+2025-11-16 12:21:31,770:     obj, end = self.scan_once(s, idx)
+2025-11-16 12:21:31,770:                ~~~~~~~~~~~~~~^^^^^^^^
+2025-11-16 12:21:31,770: ***************************************************
+2025-11-16 12:21:31,770: If you're seeing an import error and don't know why,
+2025-11-16 12:21:31,770: we have a dedicated help page to help you debug: 
+2025-11-16 12:21:31,770: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:21:31,770: ***************************************************
+2025-11-16 12:21:50,399: Error running WSGI application
+2025-11-16 12:21:50,401: json.decoder.JSONDecodeError: Invalid control character at: line 5 column 46 (char 170)
+2025-11-16 12:21:50,402:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 102, in <module>
+2025-11-16 12:21:50,402:     application = get_wsgi_application()
+2025-11-16 12:21:50,402: 
+2025-11-16 12:21:50,402:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:21:50,402:     django.setup(set_prefix=False)
+2025-11-16 12:21:50,402:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:50,402: 
+2025-11-16 12:21:50,402:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:21:50,402:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:21:50,402:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:50,402: 
+2025-11-16 12:21:50,402:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:21:50,403:     self._setup(name)
+2025-11-16 12:21:50,403:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:21:50,403: 
+2025-11-16 12:21:50,403:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:21:50,403:     self._wrapped = Settings(settings_module)
+2025-11-16 12:21:50,403:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:50,403: 
+2025-11-16 12:21:50,403:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:21:50,403:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:21:50,403: 
+2025-11-16 12:21:50,404:   File "/usr/local/lib/python3.13/json/decoder.py", line 345, in decode
+2025-11-16 12:21:50,404:     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+2025-11-16 12:21:50,404:                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:50,405: 
+2025-11-16 12:21:50,405:   File "/usr/local/lib/python3.13/json/decoder.py", line 361, in raw_decode
+2025-11-16 12:21:50,405:     obj, end = self.scan_once(s, idx)
+2025-11-16 12:21:50,405:                ~~~~~~~~~~~~~~^^^^^^^^
+2025-11-16 12:21:50,405: ***************************************************
+2025-11-16 12:21:50,405: If you're seeing an import error and don't know why,
+2025-11-16 12:21:50,405: we have a dedicated help page to help you debug: 
+2025-11-16 12:21:50,405: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:21:50,405: ***************************************************
+2025-11-16 12:21:52,307: Error running WSGI application
+2025-11-16 12:21:52,310: json.decoder.JSONDecodeError: Invalid control character at: line 5 column 46 (char 170)
+2025-11-16 12:21:52,310:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 102, in <module>
+2025-11-16 12:21:52,310:     application = get_wsgi_application()
+2025-11-16 12:21:52,310: 
+2025-11-16 12:21:52,310:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:21:52,310:     django.setup(set_prefix=False)
+2025-11-16 12:21:52,310:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:52,310: 
+2025-11-16 12:21:52,310:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:21:52,310:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:21:52,311:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:52,311: 
+2025-11-16 12:21:52,311:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:21:52,311:     self._setup(name)
+2025-11-16 12:21:52,311:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:21:52,311: 
+2025-11-16 12:21:52,311:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:21:52,311:     self._wrapped = Settings(settings_module)
+2025-11-16 12:21:52,311:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:52,311: 
+2025-11-16 12:21:52,311:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:21:52,311:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:21:52,312: 
+2025-11-16 12:21:52,312:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:21:52,312:     from .firebase_config import *
+2025-11-16 12:21:52,312: 
+2025-11-16 12:21:52,312:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 13, in <module>
+2025-11-16 12:21:52,312:     firebase_key = json.loads(firebase_key_json)
+2025-11-16 12:21:52,312: 
+2025-11-16 12:21:52,312:   File "/usr/local/lib/python3.13/json/__init__.py", line 346, in loads
+2025-11-16 12:21:52,312:     return _default_decoder.decode(s)
+2025-11-16 12:21:52,312:            ~~~~~~~~~~~~~~~~~~~~~~~^^^
+2025-11-16 12:21:52,312: 
+2025-11-16 12:21:52,312:     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+2025-11-16 12:21:52,312:                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:21:52,313: 
+2025-11-16 12:21:52,313:   File "/usr/local/lib/python3.13/json/decoder.py", line 361, in raw_decode
+2025-11-16 12:21:52,313:     obj, end = self.scan_once(s, idx)
+2025-11-16 12:21:52,313:                ~~~~~~~~~~~~~~^^^^^^^^
+2025-11-16 12:21:52,313: ***************************************************
+2025-11-16 12:21:52,313: If you're seeing an import error and don't know why,
+2025-11-16 12:21:52,313: we have a dedicated help page to help you debug: 
+2025-11-16 12:21:52,313: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:21:52,313: ***************************************************
+2025-11-16 12:27:28,601: Error running WSGI application
+2025-11-16 12:27:28,610: json.decoder.JSONDecodeError: Invalid control character at: line 5 column 46 (char 170)
+2025-11-16 12:27:28,610:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 102, in <module>
+2025-11-16 12:27:28,610:     application = get_wsgi_application()
+2025-11-16 12:27:28,610: 
+2025-11-16 12:27:28,610:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:27:28,610:     django.setup(set_prefix=False)
+2025-11-16 12:27:28,611:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:27:28,611: 
+2025-11-16 12:27:28,611:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:27:28,611:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:27:28,611:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:27:28,611: 
+2025-11-16 12:27:28,611:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:27:28,611:     self._setup(name)
+2025-11-16 12:27:28,611:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:27:28,611: 
+2025-11-16 12:27:28,612:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:27:28,612:     self._wrapped = Settings(settings_module)
+2025-11-16 12:27:28,612:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:27:28,612: 
+2025-11-16 12:27:28,612:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:27:28,612:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:27:28,612: 
+2025-11-16 12:27:28,612:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:27:28,612:     from .firebase_config import *
+2025-11-16 12:27:28,612: 
+2025-11-16 12:27:28,613:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 15, in <module>
+2025-11-16 12:27:28,613:     firebase_key = json.loads(firebase_key_json)
+2025-11-16 12:27:28,613: 
+2025-11-16 12:27:28,613:   File "/usr/local/lib/python3.13/json/__init__.py", line 346, in loads
+2025-11-16 12:27:28,613:     return _default_decoder.decode(s)
+2025-11-16 12:27:28,613:            ~~~~~~~~~~~~~~~~~~~~~~~^^^
+2025-11-16 12:27:28,613: 
+2025-11-16 12:27:28,613:   File "/usr/local/lib/python3.13/json/decoder.py", line 345, in decode
+2025-11-16 12:27:28,613:     obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+2025-11-16 12:27:28,613:                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:27:28,613: 
+2025-11-16 12:27:28,613:   File "/usr/local/lib/python3.13/json/decoder.py", line 361, in raw_decode
+2025-11-16 12:27:28,614:     obj, end = self.scan_once(s, idx)
+2025-11-16 12:27:28,614:                ~~~~~~~~~~~~~~^^^^^^^^
+2025-11-16 12:27:28,614: ***************************************************
+2025-11-16 12:27:28,614: If you're seeing an import error and don't know why,
+2025-11-16 12:27:28,614: we have a dedicated help page to help you debug: 
+2025-11-16 12:27:28,614: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:27:28,614: ***************************************************
+2025-11-16 12:27:34,468: json.decoder.JSONDecodeError: Invalid control character at: line 5 column 46 (char 170)
+2025-11-16 12:27:34,468:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 102, in <module>
+2025-11-16 12:27:34,469:     application = get_wsgi_application()
+2025-11-16 12:27:34,469: 
+2025-11-16 12:27:34,469:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:27:34,469:     django.setup(set_prefix=False)
+2025-11-16 12:27:34,469:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:27:34,469: 
+2025-11-16 12:27:34,469:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:27:34,469:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:27:34,469:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:27:34,469: 
+2025-11-16 12:27:34,469:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:27:34,470:     self._setup(name)
+2025-11-16 12:27:34,470:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:27:34,470: 
+2025-11-16 12:27:34,470:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:27:34,470:     self._wrapped = Settings(settings_module)
+2025-11-16 12:27:34,470:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:27:34,470: 
+2025-11-16 12:27:34,470:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:27:34,470:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:27:34,470: 
+2025-11-16 12:27:34,470:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:27:34,471:     from .firebase_config import *
+2025-11-16 12:27:34,471: 
+2025-11-16 12:27:34,471:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 15, in <module>
+2025-11-16 12:27:34,472: we have a dedicated help page to help you debug: 
+2025-11-16 12:27:34,472: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:27:34,472: ***************************************************
+2025-11-16 12:27:36,067: Error running WSGI application
+2025-11-16 12:27:36,070: json.decoder.JSONDecodeError: Invalid control character at: line 5 column 46 (char 170)
+2025-11-16 12:31:13,370: Error running WSGI application
+2025-11-16 12:31:13,378: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:31:13,378:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:31:13,378:     application = get_wsgi_application()
+2025-11-16 12:31:13,379: 
+2025-11-16 12:31:13,379:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:31:13,379:     django.setup(set_prefix=False)
+2025-11-16 12:31:13,379:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:31:13,379: 
+2025-11-16 12:31:13,379:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:31:13,379:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:31:13,379:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:31:13,380: 
+2025-11-16 12:31:13,380:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:31:13,380:     self._setup(name)
+2025-11-16 12:31:13,380:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:31:13,380: 
+2025-11-16 12:31:13,380:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:31:13,380:     self._wrapped = Settings(settings_module)
+2025-11-16 12:31:13,380:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:31:13,380: 
+2025-11-16 12:31:13,381:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:31:13,381:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:31:13,381: 
+2025-11-16 12:31:13,381:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:31:13,381:     from .firebase_config import *
+2025-11-16 12:31:13,381: 
+2025-11-16 12:31:13,381:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:31:13,381:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:31:13,381: ***************************************************
+2025-11-16 12:31:13,382: If you're seeing an import error and don't know why,
+2025-11-16 12:31:13,382: we have a dedicated help page to help you debug: 
+2025-11-16 12:31:13,382: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:31:13,382: ***************************************************
+2025-11-16 12:31:25,016: Error running WSGI application
+2025-11-16 12:31:25,018: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:31:25,018:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:31:25,018:     application = get_wsgi_application()
+2025-11-16 12:31:25,018: 
+2025-11-16 12:31:25,019:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/core/wsgi.py", line 12, in get_wsgi_application
+2025-11-16 12:31:25,019:     django.setup(set_prefix=False)
+2025-11-16 12:31:25,019:     ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+2025-11-16 12:31:25,019: 
+2025-11-16 12:31:25,019:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/__init__.py", line 19, in setup
+2025-11-16 12:31:25,019:     configure_logging(settings.LOGGING_CONFIG, settings.LOGGING)
+2025-11-16 12:31:25,019:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:31:25,019: 
+2025-11-16 12:31:25,020:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:31:25,020:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:31:25,020: 
+2025-11-16 12:31:25,020:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:31:25,020:     from .firebase_config import *
+2025-11-16 12:31:25,020: 
+2025-11-16 12:31:25,020:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:31:25,020:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:31:25,020: ***************************************************
+2025-11-16 12:31:25,021: If you're seeing an import error and don't know why,
+2025-11-16 12:31:25,021: we have a dedicated help page to help you debug: 
+2025-11-16 12:31:25,021: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:31:25,021: ***************************************************
+2025-11-16 12:31:26,465: Error running WSGI application
+2025-11-16 12:31:26,467: ValueError: FIREBASE_KEY environment variable not set
+2025-11-16 12:31:26,467:   File "/var/www/amaetonfashionhouse_pythonanywhere_com_wsgi.py", line 89, in <module>
+2025-11-16 12:31:26,467:     application = get_wsgi_application()
+2025-11-16 12:31:26,468:                       ^^^^^^^^^^^^^^^^^^^^^^^
+2025-11-16 12:31:26,468: 
+2025-11-16 12:31:26,468:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 81, in __getattr__
+2025-11-16 12:31:26,468:     self._setup(name)
+2025-11-16 12:31:26,468:     ~~~~~~~~~~~^^^^^^
+2025-11-16 12:31:26,468: 
+2025-11-16 12:31:26,468:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 68, in _setup
+2025-11-16 12:31:26,468:     self._wrapped = Settings(settings_module)
+2025-11-16 12:31:26,468:                     ~~~~~~~~^^^^^^^^^^^^^^^^^
+2025-11-16 12:31:26,468: 
+2025-11-16 12:31:26,469:   File "/home/amaetonfashionhouse/.virtualenvs/env/lib/python3.13/site-packages/django/conf/__init__.py", line 166, in __init__
+2025-11-16 12:31:26,469:     mod = importlib.import_module(self.SETTINGS_MODULE)
+2025-11-16 12:31:26,469: 
+2025-11-16 12:31:26,469:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/settings.py", line 181, in <module>
+2025-11-16 12:31:26,469:     from .firebase_config import *
+2025-11-16 12:31:26,469: 
+2025-11-16 12:31:26,469:   File "/home/amaetonfashionhouse/AMF-2.0/backend/products_store/products_store/firebase_config.py", line 11, in <module>
+2025-11-16 12:31:26,469:     raise ValueError("FIREBASE_KEY environment variable not set")
+2025-11-16 12:31:26,469: ***************************************************
+2025-11-16 12:31:26,469: If you're seeing an import error and don't know why,
+2025-11-16 12:31:26,469: we have a dedicated help page to help you debug: 
+2025-11-16 12:31:26,469: https://help.pythonanywhere.com/pages/DebuggingImportError/
+2025-11-16 12:31:26,470: ***************************************************
+2025-11-16 12:37:04,085: Error running WSGI application
