@@ -26,6 +26,18 @@
   --skeleton-animation-duration: 1.1s;
 }
 
+.checkout_success_wrapper {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  background-color: var(--primary-color);
+  justify-items: center;
+  gap: var(--gap);
+  z-index: 1000000;
+}
+
 form:not(.search_bar_form) {
   width: 100%;
   margin-inline: auto;

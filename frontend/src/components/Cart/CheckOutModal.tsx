@@ -1,6 +1,10 @@
 import { memo } from "react";
-import { useSelector } from "react-redux";
-import { cartApiData, type AddressForm } from "../../features/CartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  cartApiData,
+  renderCheckoutConfirmedStatus,
+  type AddressForm,
+} from "../../features/CartSlice";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
@@ -12,6 +16,7 @@ const CheckOutModal = () => {
   const { userProfile } = useSelector(product_data);
   const [cookie] = useCookies(["token"]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const path = location.pathname;
   const { userAddressData } = useSelector(cartApiData);
   const [messageApi, contextHolder] = message.useMessage();
@@ -72,17 +77,16 @@ const CheckOutModal = () => {
   const confirmOrder = () => {
     // send to customer
     emailjs.send(serviceID, templateID, templateParams, public_key);
-    // recieved customer's order
+    // recieve customer's order
     emailjs.send(serviceID, template_id, template_params, public_key);
     success();
+    dispatch(renderCheckoutConfirmedStatus(true));
   };
 
   const totalCheckoutForLocalCart = localCart.reduce(
     (sum, item) => sum + parseFloat(String(item.total_price)),
     0
   );
-
-  console.log(userAddressData);
 
   return (
     <>

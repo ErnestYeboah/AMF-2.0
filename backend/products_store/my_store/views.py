@@ -199,6 +199,13 @@ class CartViewset(ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(added_by = self.request.user)
 
+    @action(detail=False, methods=['delete'], url_path='clear_cart' ,permission_classes=[IsAuthenticated] ,authentication_classes = [TokenAuthentication])
+    def clear_cart(self, request):
+        """Custom action to clear all items in the user's cart"""
+        user = request.user
+        Cart.objects.filter(added_by=user).delete()
+        return Response({"message": "Cart cleared successfully."}, status=status.HTTP_200_OK)
+
 
 
 class FavoriteModelViewset(ModelViewSet):

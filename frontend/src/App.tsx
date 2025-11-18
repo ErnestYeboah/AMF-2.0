@@ -22,9 +22,12 @@ import DetailedProductCard from "./components/ProductPage/DetailedProductCard";
 import CartHome from "./components/Cart/CartHome";
 import {
   cartApiData,
+  clearApiCart,
+  clearLocalCart,
   fetchCartData,
   fetchRegions,
   getCurentUserAddress,
+  saveToCart,
 } from "./features/CartSlice";
 import FavoriteHome from "./components/Favorite/FavoriteHome";
 import { favoriteApiData, fetchFavoriteItems } from "./features/FavoriteSlice";
@@ -39,11 +42,13 @@ import History from "./components/ProductPage/History";
 import AccountSettings from "./components/auth/AccountSettings";
 import VerifyPasswordChangeOtp from "./components/otpRequest/VerifyPasswordChangeOtp";
 import PasswordReset from "./components/otpRequest/PasswordReset";
+import CheckoutSuccessPage from "./components/Cart/CheckoutSuccessPage";
 
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const [cookie] = useCookies(["token"]);
+  const { localCart, checkoutConfirmed } = useSelector(cartApiData);
 
   // product data slice
   const { update_user_profile_image_status, get_user_profile_status } =
@@ -67,10 +72,22 @@ function App() {
     }
   }, [cookie]);
 
+  // add to user's cart when logged in
+  useEffect(() => {
+    if (cookie["token"]) {
+      if (localCart.length > 0) {
+        localCart.map((item) =>
+          dispatch(saveToCart({ token: cookie["token"], productData: item }))
+        );
+      }
+    }
+  }, [localCart, cookie]);
+
   // get cart data if  logged in
   useEffect(() => {
     if (cookie["token"]) {
       dispatch(fetchCartData(cookie["token"]));
+      dispatch(clearLocalCart());
     }
   }, [cookie["token"]]);
 
@@ -88,8 +105,15 @@ function App() {
     }
   }, [cookie]);
 
+  useEffect(() => {
+    if (checkoutConfirmed) {
+      dispatch(clearApiCart(cookie["token"]));
+    }
+  }, [checkoutConfirmed, cookie]);
+
   return (
     <>
+      {checkoutConfirmed && <CheckoutSuccessPage />}
       {/* check if an operation is pending or loading then show the progress bar */}
       {update_user_profile_image_status === "pending" ||
         get_user_profile_status == "pending" ||

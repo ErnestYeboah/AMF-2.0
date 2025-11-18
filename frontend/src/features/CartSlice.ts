@@ -73,6 +73,7 @@ interface State {
   cities: string[];
   localCart: LocalCartState[];
   userAddressData: AddressForm;
+  checkoutConfirmed: boolean;
 }
 
 const initialState: State = {
@@ -99,6 +100,7 @@ const initialState: State = {
   },
   regions: [],
   cities: [],
+  checkoutConfirmed: false,
 };
 
 type Payload = {
@@ -179,6 +181,18 @@ export const removeFromCart: any = createAsyncThunk(
 
       return { data: response.data, id: id };
     }
+  }
+);
+
+export const clearApiCart: any = createAsyncThunk(
+  "clear_cart",
+  async (token: string) => {
+    const response = await axios.delete(`${BASE_URL}/cart/clear_cart/`, {
+      headers: {
+        Authorization: `Token ${token}`,
+      },
+    });
+    return response.data;
   }
 );
 
@@ -278,6 +292,9 @@ export const CartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    renderCheckoutConfirmedStatus(state, action) {
+      state.checkoutConfirmed = action.payload;
+    },
     setCartEmptyIfLoggedOut(state) {
       state.cart = [];
     },
@@ -295,6 +312,10 @@ export const CartSlice = createSlice({
       state.localCart.splice(itemToRemoveIndex, 1);
       saveToLocalCart(state.localCart);
       showToast("success", "item removed successfully");
+    },
+    clearLocalCart(state) {
+      localStorage.removeItem("cart");
+      state.localCart = loadLocalCart();
     },
 
     updateItemQuantityFromLocalCart(state, action) {
@@ -390,6 +411,10 @@ export const CartSlice = createSlice({
           "could not remove item , check your internet connection and try again "
         );
       })
+      // clear User's cart
+      .addCase(clearApiCart.fulfilled, (state) => {
+        state.cart = [];
+      })
 
       // get address data of logged user
       .addCase(getCurentUserAddress.pending, (state) => {
@@ -453,10 +478,12 @@ export const CartSlice = createSlice({
 
 export default CartSlice.reducer;
 export const {
+  renderCheckoutConfirmedStatus,
   setCartEmptyIfLoggedOut,
   addItemToLocalCart,
   removeFromLocalCart,
   updateItemQuantityFromLocalCart,
   clearUserAddressData,
+  clearLocalCart,
 } = CartSlice.actions;
 export const cartApiData = (state: { cart: State }) => state.cart;
