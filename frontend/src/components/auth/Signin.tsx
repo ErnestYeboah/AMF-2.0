@@ -37,8 +37,7 @@ const Signin = () => {
 
   const signin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // shen signing in the params are username and password , so enter the email as the username
-    dispatch(signinWithCredentials({ username: email, password: password }));
+    dispatch(signinWithCredentials({ email: email, password: password }));
   };
 
   const success = () => {

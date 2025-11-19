@@ -66,35 +66,47 @@ const VerifyOtpRequest = () => {
   }, [countdown]);
 
   return (
-    <div className="otp_verify_section">
-      <Logo />
-      {verify_otp_request_status === "pending" ||
-        (send_otp_request_status === "pending" && (
+    <>
+      {verify_otp_request_status === "pending" && (
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress />
+        </Box>
+      )}
+      <div className="otp_verify_section">
+        <Logo />
+        {send_otp_request_status === "pending" && (
           <Box sx={{ width: "100%" }}>
             <LinearProgress />
           </Box>
-        ))}
-      <p>Verify your email address</p>
-      <p>We have sent a verification code to </p>
-      <p>
-        <b>{cookie["email"]}</b>
-      </p>
-
-      <div className="my-[1rem]">
-        <Input.OTP className="otp" size="large" length={6} {...sharedProps} />
-      </div>
-      {!allowToResend ? (
+        )}
+        <p>Verify your email address</p>
+        <p>We have sent a verification code to </p>
         <p>
-          Didn't receive the verification code? It could take a bit of time,
-          request a new code in{" "}
-          <span className="text-[var(--accent-color)]">{countdown}</span>
+          <b>{cookie["email"]}</b>
         </p>
-      ) : (
-        <button onClick={() => dispatch(sendOtpRequest(cookie["email"]))}>
-          Request a new code
-        </button>
-      )}
-    </div>
+
+        <div className="my-[1rem]">
+          <Input.OTP
+            disabled={verify_otp_request_status === "pending"}
+            className="otp"
+            size="large"
+            length={6}
+            {...sharedProps}
+          />
+        </div>
+        {!allowToResend ? (
+          <p>
+            Didn't receive the verification code? It could take a bit of time,
+            request a new code in{" "}
+            <span className="text-[var(--accent-color)]">{countdown}</span>
+          </p>
+        ) : (
+          <button onClick={() => dispatch(sendOtpRequest(cookie["email"]))}>
+            Request a new code
+          </button>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #fafafa;
+        padding: 20px;
+      }
+      .wrapper {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+      .title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #444;
+      }
+      .detail {
+        margin-top: 18px;
+        font-size: 16px;
+        color: #555;
+        line-height: 1.5;
+      }
+      .footer {
+        margin-top: 25px;
+        font-size: 13px;
+        color: #999;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="title">🔐 New Login Detected</div>
+
+      <p class="detail">
+        Hello {{ user.email }},<br /><br />
+        Your account was logged into on:<br />
+        <b>{{ date }}</b> at <b>{{ time }}</b><br /><br />
+        If this was you, you can safely ignore this message.<br />
+        If not, please reset your password immediately.
+      </p>
+
+      <p class="footer">Stay safe and secure 🔒</p>
+    </div>
+  </body>
+</html>

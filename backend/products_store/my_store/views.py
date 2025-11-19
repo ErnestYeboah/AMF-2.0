@@ -15,6 +15,12 @@ from datetime import timedelta
 from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
 from firebase_admin import auth as firebase_auth
+from rest_framework.viewsets import ViewSet
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.conf import settings
+from django.utils import timezone
+
 
 
 User = get_user_model()
@@ -24,6 +30,58 @@ User = get_user_model()
 class UserViewset(ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
+
+    @action(detail=False, methods=['post'])
+    def login(self, request):
+        email = request.data.get("email")
+        password = request.data.get("password")
+
+        # Validate user
+        user = CustomUser.objects.filter(email=email).first()
+        if user is None or not user.check_password(password):
+            return Response({"error": "Invalid email or password"}, status=400)
+
+        # Create or get DRF token
+        token, _ = Token.objects.get_or_create(user=user)
+
+        # Today's date
+        today = timezone.now().date()
+        current_time = timezone.now().strftime("%H:%M:%S")
+
+        # SEND LOGIN EMAIL ONCE PER DAY
+        if user.last_login_email_sent != today:
+
+            # Load your HTML template
+            html_content = render_to_string(
+                "emails/login_notification.html",
+                {
+                    "user": user,
+                    "date": today,
+                    "time": current_time,
+                }
+            )
+
+            # Build email
+            email_message = EmailMultiAlternatives(
+                subject="New Login Detected 🔐",
+                body="A new login occurred on your account.",  # Fallback text
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[user.email]
+            )
+            email_message.attach_alternative(html_content, "text/html")
+            email_message.send()
+
+            # Store last email date to avoid duplicates
+            user.last_login_email_sent = today
+            user.save()
+
+        # Return token to React
+        return Response({
+            "message": "Login successful",
+            "token": token.key,
+            "logged_in_date": str(today)
+        }, status=200)
+
 
 
     @action(detail=False, methods=['post'])
@@ -88,6 +146,19 @@ class UserViewset(ModelViewSet):
         if not user.verify_otp(otp):
             return Response({"error": "Invalid or expired OTP"}, status=400)
 
+        html_content = render_to_string(
+        "emails/welcome_email.html",
+        {"user": user}
+             )
+
+        email_message = EmailMultiAlternatives(
+            subject="Welcome to Amaeton Fashion House 🎉",
+            body="Welcome to our platform!",   # fallback text
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[user.email]
+        )
+        email_message.attach_alternative(html_content, "text/html")
+        email_message.send()
         return Response({
             "message": "OTP verified successfully",
         }, status=200)
@@ -279,7 +350,8 @@ class HistoryViewset(ModelViewSet):
 
 
 
-class FirebaseAuthViewSet(ModelViewSet):
+class FirebaseAuthViewSet(ViewSet):
+   
     """
     Handles Firebase login using ID token from frontend (Firebase Google Sign-In)
     """
@@ -311,6 +383,30 @@ class FirebaseAuthViewSet(ModelViewSet):
             # 🔹 Create / get DRF token
             token, _ = Token.objects.get_or_create(user=user)
 
+
+            
+            today = timezone.now().date()
+            current_time = timezone.now().strftime("%H:%M:%S")
+
+            # Send login email only once per day
+            if user.last_login_email_sent != today:
+                html_content = render_to_string(
+                    "emails/login_notification.html",
+                    {
+                        "user": user,
+                        "date": today,
+                        "time": current_time,
+                    }
+                )
+
+            email_message = EmailMultiAlternatives(
+                subject="New Login Detected 🔐",
+                body="A new login occurred on your account.",
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[user.email]
+            )
+            email_message.attach_alternative(html_content, "text/html")
+            email_message.send()
             return Response(
                 {
                     "message": "Login successful",

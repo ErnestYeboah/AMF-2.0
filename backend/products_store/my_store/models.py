@@ -33,6 +33,8 @@ class CustomUser(AbstractUser):
     otp_verified_at = models.DateTimeField(null=True, blank=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    last_login_email_sent = models.DateField(null=True, blank=True)
+
 
     objects = CustomUserManager()
 

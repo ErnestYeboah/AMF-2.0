@@ -46,7 +46,7 @@ export const handleGoogleSignIn: any = createAsyncThunk(
 export const signinWithCredentials: any = createAsyncThunk(
   "signin",
   async (payload) => {
-    const response = await axios.post(`${BASE_URL}/auth/`, payload, {
+    const response = await axios.post(`${BASE_URL}/users/login/`, payload, {
       headers: {
         "Content-Type": "application/json",
       },
