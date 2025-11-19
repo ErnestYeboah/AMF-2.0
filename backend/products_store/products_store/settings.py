@@ -13,8 +13,16 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-from dotenv import load_dotenv
-load_dotenv()
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Load .env only in local environment
+if os.environ.get("PA_ENV") != "production":
+    from dotenv import load_dotenv
+    load_dotenv(BASE_DIR / ".env")
+
 from .firebase_config import *
 
 
@@ -27,7 +35,7 @@ SECRET_KEY = 'django-insecure-v7m+4@cj0m&c&e9)j_k(76*_)z%^vf%b#gwx&ah_t!+s8zeost
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["amaetonfashionhouse.pythonanywhere.com"]
 
 
 
